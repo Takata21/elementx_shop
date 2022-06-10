@@ -1,0 +1,11 @@
+.secondary-banner {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #FF7E38;
+
+}
+
+.secondary-banner-img {
+    width: 120px;
+}

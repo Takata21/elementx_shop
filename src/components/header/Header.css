@@ -1,0 +1,62 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 64px;
+    padding: 4px 24px;
+    background-color: rgba(34, 40, 49, 1);
+}
+
+.header-hamburger-menu-container {
+    /* border: 1px solid red; */
+}
+
+.header-hamburger-menu {
+    margin-right: 10px;
+    cursor: pointer;
+    /* border: 1px solid red; */
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+
+}
+
+.header-logo-container {
+    /* border: 1px solid red; */
+}
+
+
+
+.header-logo-img,
+.header-letters-img {
+    height: 50px;
+}
+
+.header-letters-img {
+    display: none;
+}
+
+.header-profile-picture {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.header-right {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    height: 50px;
+    color: white;
+}
+
+
+
+@media screen and (min-width: 720px) {
+    .header-letters-img {
+        display: inline;
+    }
+}
