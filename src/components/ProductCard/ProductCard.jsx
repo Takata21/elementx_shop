@@ -16,13 +16,19 @@ const ProductCard = () => {
         </div>
         <div className=" product-card-body">
           <div className="product-card-info">
-            <h5 className="product-title">ASUS TUG GAMING F15</h5>
-            <Valoration number={2} />
-            <p className="product-card-price">$ 1000</p>
-            <p className="product-desc">
-              Es un portátil de gaming Windows 10 Pro armado hasta los dientes
-              para servirte la victoria en bandeja.......
+            {/* <h5 className="product-title">ASUS TUG GAMING F15</h5> */}
+            <p className="product-card-desc">
+              es un portátil de gaming Windows 10 Pro armado hasta los dientes
+              para servirte....
             </p>
+            <Valoration number={2} />
+            <div className="product-card-footer">
+              <p className="product-card-price">$ 1000</p>
+              {/* <button>
+                <BsCart4 />
+                Agregar al carrito
+              </button> */}
+            </div>
           </div>
         </div>
       </div>

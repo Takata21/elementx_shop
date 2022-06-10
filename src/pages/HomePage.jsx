@@ -28,16 +28,16 @@ const HomePage = () => {
         </div>
       </div>
       <div className="px-2 position-sticky product-container">
-        <div className="p-2 position-relative  products-card-container">
+        <div className="p-1 position-relative  products-card-container">
           <ProductCard />
           <ProductCard />
           <ProductCard />
           <ProductCard />
         </div>
       </div>
-      <div className="secondary-banner-container">
-        <SecondaryBanner />
-      </div>
+      <SecondaryBanner />
+      {/* <div className="secondary-banner-container">
+      </div> */}
       <div className="p-4 position-relative products-card-container">
         <ProductCard />
         <ProductCard />

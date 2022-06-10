@@ -1,11 +1,28 @@
 .secondary-banner {
     display: flex;
     width: 100%;
+    height: 100%;
+    margin: 20px 0;
     align-items: center;
     background-color: #FF7E38;
+    overflow: hidden;
 
 }
 
 .secondary-banner-img {
     width: 120px;
+}
+
+@media screen and (min-width: 720px) {
+    .secondary-banner {
+        color: white;
+        height: 140px;
+        border: 1px solid red;
+        justify-content: space-between;
+    }
+
+    .secondary-banner-img {
+        width: 270px;
+        margin-top: 70px;
+    }
 }

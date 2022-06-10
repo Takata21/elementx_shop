@@ -2,6 +2,7 @@ import React from 'react';
 import SocialBanner from '../SocialBanner/SocialBanner';
 import './Footer.css';
 const Footer = () => {
+  const year = new Date().getFullYear();
   return (
     <footer className="bg-dark position-relative pt-5 shadow-lg flex-column z-index-2">
       <SocialBanner />
@@ -149,7 +150,7 @@ const Footer = () => {
           />
 
           <span className="align-self-center text-light fw-normal">
-            &copy; Todos los Derechos Reservados.
+            &copy;{year} Todos los Derechos Reservados.
           </span>
         </div>
       </div>
