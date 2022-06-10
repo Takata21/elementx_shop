@@ -1,5 +1,4 @@
 import React from 'react';
-import './carousel.css';
 const carousel = () => {
   return (
     <div className="slider my-3">
