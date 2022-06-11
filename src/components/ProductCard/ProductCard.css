@@ -27,6 +27,10 @@
     cursor: pointer;
 }
 
+
+
+
+
 .product-card-desc {
     margin-bottom: 0;
 }
@@ -68,6 +72,8 @@
 @media screen and (min-width: 720px) {
     .product-card {
         flex-direction: column;
+        max-width: 300px;
+
     }
 
 

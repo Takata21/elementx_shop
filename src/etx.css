@@ -118,17 +118,3 @@
     margin-top: -250px;
 
 }
-
-.products-card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-
-}
-
-
-@media screen and (min-width: 720px) {
-    .products-card-container {
-        flex-wrap: nowrap;
-    }
-}

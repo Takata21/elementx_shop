@@ -21,3 +21,21 @@ a {
 .min-h {
   min-height: 100vh;
 }
+
+.products-card-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+
+}
+
+@media screen and (min-width: 720px) {
+
+  .products-card-container {
+    flex-direction: row;
+
+
+  }
+}

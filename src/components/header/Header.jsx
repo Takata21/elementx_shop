@@ -45,13 +45,16 @@ const Header = () => {
           </Link>
         </div>
         <div className="header-profile-container">
-          <Link to="/profile">
+          <Link to="/login" className="header-login-btn">
+            Iniciar sesión
+          </Link>
+          {/* <Link to="/profile">
             <img
               src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=35"
               alt=""
               className="header-profile-picture"
             />
-          </Link>
+          </Link> */}
         </div>
       </div>
     </header>

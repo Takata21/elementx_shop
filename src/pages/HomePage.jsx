@@ -33,17 +33,20 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="px-2 position-sticky product-container">
-          <div className="p-1 position-relative  products-card-container">
+        <div className="px-2 product-container">
+          <div className="products-card-container">
             {products.map((product) => {
               return <ProductCard product={product} key={product._id} />;
             })}
           </div>
         </div>
         <SecondaryBanner />
-        {/* <div className="secondary-banner-container">
-        </div> */}
-        <div className="p-4 position-relative products-card-container">{}</div>
+
+        <div className="p-4 position-relative products-card-container">
+          {products.map((product) => {
+            return <ProductCard product={product} key={product._id} />;
+          })}
+        </div>
         <div className="">
           <Carousel />
         </div>

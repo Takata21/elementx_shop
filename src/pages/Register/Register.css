@@ -1,0 +1,51 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 675px;
+}
+
+.register button {
+    border: 1px solid red;
+    display: block;
+    margin: 10px auto 5px auto;
+}
+
+.register form {}
+
+.register-container {
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid rgb(166, 166, 166);
+
+}
+
+.register-container img {
+    width: 50px;
+    height: 50px;
+}
+
+.form-control-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 250px;
+}
+
+.form-control-container label {
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.form-control-container label {}
+
+.form-control-container input {
+    padding: 6px 24px;
+    border: 1px solid rgb(166, 166, 166);
+    /* box-shadow: 0 0.1rem 0.3rem rgba(0, 173, 181, 1); */
+}
+
+.form-control-container input:focus {
+    outline: none;
+}
