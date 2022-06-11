@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BsCart4 } from 'react-icons/bs';
 import Valoration from '../Valoration/Valoration';
 import './ProductCard.css';
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
+  console.log(product);
   return (
     <Link to="product/askdlj">
       <div className="product-card">
@@ -16,14 +16,20 @@ const ProductCard = () => {
         </div>
         <div className=" product-card-body">
           <div className="product-card-info">
-            {/* <h5 className="product-title">ASUS TUG GAMING F15</h5> */}
+            <h5 className="product-title">{product.name}</h5>
             <p className="product-card-desc">
-              es un portátil de gaming Windows 10 Pro armado hasta los dientes
-              para servirte....
+              {`${product.description.substring(0, 100)}...`}
             </p>
-            <Valoration number={2} />
+            {/* <p className="product-card-desc">
+          {readMore ? info : `${info.substring(0, 200)}...`}
+          <button onClick={() => setReadMore(!readMore)}>
+            {readMore ? 'show less' : '  read more'}
+          </button>
+        </p> */}
+
+            <Valoration number={product.rating} />
             <div className="product-card-footer">
-              <p className="product-card-price">$ 1000</p>
+              <p className="product-card-price">{product.price}</p>
               {/* <button>
                 <BsCart4 />
                 Agregar al carrito

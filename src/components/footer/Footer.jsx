@@ -125,10 +125,10 @@ const Footer = () => {
               <span>+507 988-2214</span>
               <span>+507 6984-5064</span>
             </div>
-            <h5 class="fw-bold text-success fs-6">Dirección</h5>
-            <div class="d-flex flex-column">
+            <h5 className="fw-bold text-success fs-6">Dirección</h5>
+            <div className="d-flex flex-column">
               <a
-                class="fs-7 text-decoration-none bi bi-dot ho-secondary"
+                className="fs-7 text-decoration-none bi bi-dot ho-secondary"
                 href="https://g.page/elementxgamezone?share"
                 target="_blank"
                 title="Ubicación en Google Maps"

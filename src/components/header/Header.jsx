@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './Header.css';
-import { FaBars, FaSearch } from 'react-icons/fa';
-import { BsCart4 } from 'react-icons/bs';
+import { FaBars, FaSearch, FaShoppingCart } from 'react-icons/fa';
+
 import { Link } from 'react-router-dom';
 import Search from '../search/Search';
 import Cart from '../cart/Cart';
@@ -41,7 +41,7 @@ const Header = () => {
         </div>
         <div className="header-cart-container">
           <Link to="/cart">
-            <BsCart4 size="25" color="white" />
+            <FaShoppingCart size="25" color="white" />
           </Link>
         </div>
         <div className="header-profile-container">

@@ -17,3 +17,7 @@ a {
   text-decoration: none;
   color: black;
 }
+
+.min-h {
+  min-height: 100vh;
+}

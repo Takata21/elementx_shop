@@ -61,6 +61,10 @@
     margin: 0;
 }
 
+.product-title {
+    text-transform: capitalize;
+}
+
 @media screen and (min-width: 720px) {
     .product-card {
         flex-direction: column;
@@ -69,6 +73,6 @@
 
     .product-card-img {
         width: 250px;
-        height: 25g0px;
+        height: 250px;
     }
 }
