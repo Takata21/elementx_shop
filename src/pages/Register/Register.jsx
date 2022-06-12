@@ -1,39 +1,108 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/provider/AuthContext';
 import './Register.css';
 const Register = () => {
+  const { errorMessage, isLoading, signup } = useAuth();
+  let navigate = useNavigate();
+  const [user, setUser] = useState({
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
+    birthday: '',
+  });
+
+  const handleChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const userResponse = await signup(user);
+      if (userResponse) {
+        navigate('/login');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="register">
+      <Link to="/">
+        <img
+          src="./assets/img/LogoElementx.svg"
+          alt=""
+          className="register-logo"
+        />
+        <img
+          src="./assets/img/LettersElementxBlack.svg"
+          alt=""
+          className="register-letter-logo"
+        />
+      </Link>
       <div className="register-container">
-        <img src="./assets/img/LogoElementx.svg" alt="" />
-        <img src="./assets/img/LettersElementx.svg" alt="" />
-        <form>
+        <form onSubmit={handleSubmit}>
           <h4>Crear cuenta</h4>
           <div className="form-control-container">
-            <label htmlFor="">nombre</label>
-            <input type="text" />
+            <label htmlFor="name">nombre</label>
+            <input name="name" id="name" onChange={handleChange} type="text" />
           </div>
           <div className="form-control-container">
-            <label htmlFor="">apellido</label>
-            <input type="text" />
+            <label htmlFor="surname">apellido</label>
+            <input
+              name="surname"
+              id="surname"
+              onChange={handleChange}
+              type="text"
+            />
           </div>
           <div className="form-control-container">
-            <label htmlFor="">correo electronico</label>
-            <input type="email" />
+            <label htmlFor="email">correo electronico</label>
+            <input
+              name="email"
+              id="email"
+              onChange={handleChange}
+              type="email"
+            />
           </div>
           <div className="form-control-container">
-            <label htmlFor="">contraseña</label>
-            <input type="password" />
+            <label htmlFor="password">contraseña</label>
+            <input
+              name="password"
+              id="password"
+              onChange={handleChange}
+              type="password"
+            />
           </div>
           <div className="form-control-container">
-            <label htmlFor="">confirmar contraseña</label>
-            <input type="password" />
+            <label htmlFor="password2">confirmar contraseña</label>
+            <input
+              name="password2"
+              id="password2"
+              onChange={handleChange}
+              type="password"
+            />
           </div>
           <div className="form-control-container">
-            <label htmlFor="">Fecha de nacimiento</label>
-            <input type="date" />
+            <label htmlFor="birthday">Fecha de nacimiento</label>
+            <input
+              name="birthday"
+              id="birthday"
+              onChange={handleChange}
+              type="date"
+            />
           </div>
-          <button type="submit">Registrar</button>
+          <button className="register-btn" type="submit">
+            Registrar
+          </button>
         </form>
+        <hr />
+        <small>
+          ¿Ya tienes una cuenta?
+          <Link to="/login">Iniciar sesión</Link>
+        </small>
       </div>
     </div>
   );
