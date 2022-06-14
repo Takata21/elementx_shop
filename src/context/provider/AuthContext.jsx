@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from 'react';
-import { register, login, profile } from '../../api/authAPI.JS';
+import { register, login, profile } from '../../api/authAPI';
 import { AuthActions } from '../actions/authActions';
 import { initialState, authReducer } from '../reducer/authReducer';
 
