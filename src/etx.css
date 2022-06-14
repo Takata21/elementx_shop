@@ -107,7 +107,7 @@
 
 .top-banner {
     background-image:
-        linear-gradient(0deg, #fff 0%, rgba(255, 255, 255, 0.849) 40%, rgba(255, 255, 255, 0) 99%), url('./assets/img/banner2.jpg');
+        linear-gradient(0deg, #fff 0%, rgba(255, 255, 255, 0.849) 40%, rgba(255, 255, 255, 0) 99%), url('https://res.cloudinary.com/du7mcjlgl/image/upload/v1655179649/banner2_x5ptoo.jpg');
     background-size: cover;
     height: 400px;
     width: 100%
