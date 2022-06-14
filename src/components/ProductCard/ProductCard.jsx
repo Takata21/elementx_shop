@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import Valoration from '../Valoration/Valoration';
 import './ProductCard.css';
 const ProductCard = ({ product }) => {
+  console.log(product.images.url);
   return (
     <Link to={`product/${product._id}`}>
       <div className="product-card">
         <div className="product-card-head">
           <img
-            src="./assets/img/fill2.jpg"
-            alt=""
+            src={product.images.url}
+            alt={product.name}
             className="product-card-img"
           />
         </div>
