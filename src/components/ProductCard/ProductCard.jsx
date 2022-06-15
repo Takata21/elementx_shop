@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Valoration from '../Valoration/Valoration';
 import './ProductCard.css';
 const ProductCard = ({ product }) => {
-  console.log(product.images.url);
   return (
     <Link to={`product/${product._id}`}>
       <div className="product-card">
@@ -12,6 +11,7 @@ const ProductCard = ({ product }) => {
             src={product.images.url}
             alt={product.name}
             className="product-card-img"
+            loading="lazy"
           />
         </div>
         <div className=" product-card-body">

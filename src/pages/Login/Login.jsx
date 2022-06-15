@@ -28,7 +28,7 @@ const Login = () => {
     <div className="register">
       <Link to="/">
         <img
-          src="./assets/img/LogoElementx.svg"
+          src="/assets/img/LogoElementx.svg"
           alt=""
           className="register-logo"
         />

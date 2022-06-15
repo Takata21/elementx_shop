@@ -7,7 +7,7 @@ const Copyright = () => {
     <div style={{ backgroundColor: '#191d24' }}>
       <div className="container d-flex flex-column align-content-center text-center py-3">
         <img
-          src="./assets/img/LettersElementx.svg"
+          src="/assets/img/LettersElementx.svg"
           alt="Logo"
           width="150px"
           className="align-self-center text-light"

@@ -5,7 +5,7 @@ import './Footer.css';
 const Footer = () => {
   let location = useLocation();
 
-  if (location.pathname !== '/login' && location.pathname !== '/register') {
+  if (location.pathname === '/') {
     return (
       <footer className="bg-dark position-relative pt-5 shadow-lg flex-column z-index-2">
         <SocialBanner />

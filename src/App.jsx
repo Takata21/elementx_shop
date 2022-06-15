@@ -4,7 +4,7 @@ import Header from './components/header/Header';
 import Cart from './pages/Cart/Cart';
 import HomePage from './pages/HomePage';
 import Profile from './pages/Profile';
-import Product from './pages/Product';
+import Product from './pages/Product/Product';
 import { ProductProvider } from './context/provider/ProductsContext';
 import { AuthProvider } from './context/provider/AuthContext';
 import Login from './pages/Login/Login';

@@ -25,12 +25,12 @@ const Header = () => {
           </span>
           <Link to="/" className="header-logo-container">
             <img
-              src="./assets/img/LogoElementx.svg"
+              src="/assets/img/LogoElementx.svg"
               alt=""
               className="header-logo-img"
             />
             <img
-              src="./assets/img/LettersElementx.svg"
+              src="/assets/img/LettersElementx.svg"
               alt=""
               className="header-letters-img"
             />

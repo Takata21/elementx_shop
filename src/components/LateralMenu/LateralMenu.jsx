@@ -19,7 +19,7 @@ const LateralMenu = ({ openMenu, setOpenMenu }) => {
           <div className="lateral-menu-head">
             <Link to="/">
               <img
-                src="./assets/img/LogoElementx.svg"
+                src="/assets/img/LogoElementx.svg"
                 alt=""
                 className="logo-img"
               />
