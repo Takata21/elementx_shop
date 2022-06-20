@@ -6,11 +6,12 @@ import { TailSpin } from 'react-loader-spinner';
 import { getProduct } from '../../api/productsAPI';
 import Valoration from '../../components/Valoration/Valoration';
 import { useProducts } from '../../context/provider/ProductsContext';
-
+import { useCart } from '../../context/provider/CartContext';
 const Product = () => {
   const params = useParams();
-  console.log(params.id);
+
   const [product, setProduct] = useState({});
+  const { appendItemToCart } = useCart();
   useEffect(() => {
     const loadProduct = async () => {
       const product = await getProduct(params.id);
@@ -18,6 +19,10 @@ const Product = () => {
     };
     loadProduct();
   }, [params]);
+
+  const handleCart = (product) => {
+    appendItemToCart(product);
+  };
 
   if (!product) {
     return (
@@ -55,7 +60,10 @@ const Product = () => {
           <img src="/assets/img/unoexpress.png" alt="unoexpress" />
         </div>
         <p className="product-page-price">$ {product.price}</p>
-        <button className="product-page-add-to-cart">
+        <button
+          className="product-page-add-to-cart"
+          onClick={() => handleCart(product)}
+        >
           <FaShoppingCart />
           <span>Agregar al carrito de compra</span>
         </button>

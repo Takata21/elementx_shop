@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
 
       if (token) {
         const resUser = await profile(token);
+
         localStorage.setItem('etx_user', JSON.stringify(resUser.data));
 
         dispatch({
@@ -37,6 +38,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       if (error) {
+        console.log(error);
         dispatch({
           type: AuthActions.AUTH_SIGNUP_ERROR,
           payload: error.response.data.message || 'error interno',
@@ -52,7 +54,7 @@ export const AuthProvider = ({ children }) => {
       console.log(res);
       const { token } = res.data;
 
-      localStorage.setItem('etx', token);
+      localStorage.setItem('etx_token', token);
 
       if (token) {
         const resUser = await profile(token);

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/provider/AuthContext';
 import './Register.css';
 const Register = () => {
-  const { errorMessage, isLoading, signup } = useAuth();
+  const { errorMessage, isLoading, signup, isLoggedIn } = useAuth();
   let navigate = useNavigate();
+
   const [user, setUser] = useState({
     name: '',
     surname: '',
@@ -28,6 +29,22 @@ const Register = () => {
       console.log(error);
     }
   };
+  useEffect(() => {
+    const verifyLogin = () => {
+      if (isLoggedIn) {
+        navigate('/');
+      }
+    };
+    verifyLogin();
+  }, []);
+  if (isLoggedIn) {
+    return (
+      <div className="register">
+        <h1>Unauthorized</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="register">
       <Link to="/">

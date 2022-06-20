@@ -1,0 +1,66 @@
+.card-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+}
+
+.card-actions p {
+    font-weight: 700;
+}
+
+.card-actions button {
+    display: flex;
+    align-items: center;
+    background-color: rgb(0, 173, 181);
+    color: #fff;
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+
+.card-actions-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 80%;
+    height: auto;
+}
+
+.card-cart {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 5px 7px 24px -6px rgba(79, 79, 79, 0.26);
+}
+
+.card-cart p {
+    margin: 0;
+}
+
+.card-btn-delete {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-head-img-container img {
+    object-fit: contain;
+}
+
+.card-price {
+    font-weight: 600;
+}

@@ -1,16 +1,16 @@
 import React, { useRef, useState } from 'react';
 import './Header.css';
-import { FaBars, FaSearch, FaShoppingCart } from 'react-icons/fa';
-
+import { FaBars, FaSearch, FaShoppingCart, FaUserCircle } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
-import Search from '../search/Search';
-import Cart from '../cart/Cart';
-import Profile from '../profile/Profile';
+
 import LateralMenu from '../LateralMenu/LateralMenu';
+import { useAuth } from '../../context/provider/AuthContext';
+import { useCart } from '../../context/provider/CartContext';
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   let location = useLocation();
-
+  const { isLoggedIn, user } = useAuth();
+  const { totalItems } = useCart();
   if (location.pathname !== '/login' && location.pathname !== '/register') {
     return (
       <header className="header">
@@ -42,14 +42,31 @@ const Header = () => {
             <FaSearch size="25" color="white" />
           </div>
           <div className="header-cart-container">
-            <Link to="/cart">
+            <Link to="/cart" className="header-cart-link">
               <FaShoppingCart size="25" color="white" />
+              <span className="header-cart-number-item">{totalItems}</span>
             </Link>
           </div>
           <div className="header-profile-container">
-            <Link to="/login" className="header-login-btn">
-              Iniciar sesión
-            </Link>
+            {isLoggedIn ? (
+              <Link to="/profile" className="header-login-btn">
+                <div className="header-login-l2">
+                  <img
+                    src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y"
+                    alt=""
+                  />
+                  <span className="">Hola, {user.name}</span>
+                </div>
+              </Link>
+            ) : (
+              <Link to="/login" className="header-login-btn">
+                <div className="header-login-l1">
+                  <FaUserCircle />
+                  <span> Iniciar sesión</span>
+                </div>
+              </Link>
+            )}
+
             {/* <Link to="/profile">
               <img
                 src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=35"

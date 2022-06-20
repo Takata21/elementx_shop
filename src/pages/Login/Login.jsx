@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/provider/AuthContext';
 
@@ -8,7 +8,7 @@ const Login = () => {
     email: '',
     password: '',
   });
-  const { signin, isLoading, errorMessage } = useAuth();
+  const { signin, isLoading, errorMessage, isLoggedIn } = useAuth();
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
@@ -24,6 +24,21 @@ const Login = () => {
       console.log(error);
     }
   };
+  useEffect(() => {
+    const verifyLogin = () => {
+      if (isLoggedIn) {
+        navigate('/');
+      }
+    };
+    verifyLogin();
+  }, []);
+  if (isLoggedIn) {
+    return (
+      <div className="register">
+        <h1>Unauthorized</h1>
+      </div>
+    );
+  }
   return (
     <div className="register">
       <Link to="/">

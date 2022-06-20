@@ -8,6 +8,21 @@
     background-color: rgba(34, 40, 49, 1);
 }
 
+.header-cart-link {
+    position: relative;
+    display: flex;
+}
+
+.header-cart-number-item {
+    position: absolute;
+    width: 100%;
+    top: -15px;
+    right: -15px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #FF7E38;
+}
+
 .header-hamburger-menu-container {
     /* border: 1px solid red; */
 }
@@ -26,6 +41,23 @@
 
 .header-login-btn {
     color: white;
+    display: flex;
+    align-items: center;
+}
+
+.header-login-l2 {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.header-login-l2 img {
+    width: 25px;
+    border-radius: 50%;
+}
+
+.header-login-l2 span {
+    text-transform: capitalize;
 }
 
 .header-logo-container {
