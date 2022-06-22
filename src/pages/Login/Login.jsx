@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { TailSpin } from 'react-loader-spinner';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/provider/AuthContext';
 
@@ -78,8 +79,19 @@ const Login = () => {
             />
           </div>
 
-          <button className="register-btn" type="submit">
-            Iniciar Sesión
+          <button
+            className="register-btn"
+            type="submit"
+            disabled={!user.email || user.password || isLoading}
+          >
+            {isLoading ? (
+              <>
+                <TailSpin />
+                <span>cargando</span>
+              </>
+            ) : (
+              <span> Iniciar Sesión</span>
+            )}
           </button>
         </form>
         <hr />

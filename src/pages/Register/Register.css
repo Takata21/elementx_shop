@@ -7,7 +7,10 @@
 }
 
 .register-btn {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
     margin: 10px auto 5px auto;
     padding: 5px 10px;
     color: white;
@@ -15,6 +18,15 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.register-btn svg {
+    width: 30px;
+    height: 25px;
+}
+
+.register-btn:disabled {
+    cursor: not-allowed;
 }
 
 .register form {}
@@ -73,6 +85,10 @@
 
 .form-control-container input:focus {
     outline: none;
+}
+
+.password-error {
+    color: red;
 }
 
 .register-logo {

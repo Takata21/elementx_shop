@@ -32,7 +32,7 @@ const CartCard = ({ product }) => {
           </button>
         </div>
         <div>
-          <p className="card-price">$900</p>
+          <p className="card-price">$ {product?.price}</p>
         </div>
         <button className="card-btn-delete" onClick={() => removeItem(product)}>
           <FaTrashAlt color="red" size="15" />
