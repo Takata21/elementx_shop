@@ -5,12 +5,27 @@ import {
   FaCcMastercard,
   FaCcVisa,
   FaCcPaypal,
+  FaMoneyBillWave,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import CartCard from '../../components/CartCards/CartCard';
 import { useCart } from '../../context/provider/CartContext';
+import { useAuth } from '../../context/provider/AuthContext';
+import toast from 'react-hot-toast';
+import PaypalComponent from '../../components/PaypalButton/PaypalButton';
 const Cart = () => {
   const { totalItems, items, totalPrice } = useCart();
+  const { isLoggedIn } = useAuth();
+  const handlePay = () => {
+    if (!isLoggedIn) {
+      toast.error('NECESITA INICIAR SESIÓN PARA REALIZAR SU COMPRA', {
+        style: {
+          color: '#fff',
+          background: '#dc3545',
+        },
+      });
+    }
+  };
   return (
     <div className="cart-container">
       <div className="cart-items">
@@ -40,7 +55,7 @@ const Cart = () => {
       </div>
       <div className="card-payment">
         <div className="card-payment-head">
-          <h5 className="">Card details</h5>
+          <h5 className="">Detalles de compra</h5>
           <img
             src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y"
             className="img-fluid rounded-3"
@@ -48,17 +63,17 @@ const Cart = () => {
             width={'52px'}
           />
         </div>
-        <p className="">Card type</p>
+        <p className="">Aceptamos</p>
         <div className="card-payment-types">
-          <a href="#!" type="submit" className="text-white">
+          <span href="#!" type="submit" className="text-white">
             <FaCcMastercard size="35px" />
-          </a>
-          <a href="#!" type="submit" className="text-white">
+          </span>
+          <span href="#!" type="submit" className="text-white">
             <FaCcVisa size="35px" />
-          </a>
-          <a href="#!" type="submit" className="text-white">
+          </span>
+          <span href="#!" type="submit" className="text-white">
             <FaCcPaypal size="35px" />
-          </a>
+          </span>
           <a href="#!" type="submit" className="text-white"></a>
         </div>
 
@@ -76,19 +91,25 @@ const Cart = () => {
 
         <div className="card-payment-total">
           <p className="">Total(Incl. taxes)</p>
-          <p className="">
-            $ {new Intl.NumberFormat().format(totalPrice + 20)}
-          </p>
+          <p className="">$ {new Intl.NumberFormat().format(totalPrice)}</p>
         </div>
 
-        <button type="button" className="">
+        <div className="d-flex justify-content-end paypal-container">
+          <PaypalComponent />
+        </div>
+
+        {/* <button
+          type="button"
+          className="payment-btn"
+          onClick={() => handlePay()}
+          disabled={totalPrice === 0}
+        >
           <div className="">
             <span>$ {new Intl.NumberFormat().format(totalPrice)}</span>
-            <span>
-              Checkout <FaLongArrowAltLeft />
-            </span>
+            <span>Checkout</span>
+            <FaMoneyBillWave />
           </div>
-        </button>
+        </button> */}
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import './Product.css';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
+import { toast } from 'react-hot-toast';
 import { getProduct } from '../../api/productsAPI';
 import Valoration from '../../components/Valoration/Valoration';
 import { useProducts } from '../../context/provider/ProductsContext';
@@ -22,6 +23,9 @@ const Product = () => {
 
   const handleCart = (product) => {
     appendItemToCart(product);
+    toast.success('Item agregado al carrito', {
+      position: 'bottom-right',
+    });
   };
 
   if (!product) {
