@@ -11,6 +11,7 @@ import { CartProvider } from './context/provider/CartContext';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Copyright from './components/Copyright/Copyright';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Copyright />
         </CartProvider>
       </AuthProvider>
+      <Toaster />
     </BrowserRouter>
   );
 }
