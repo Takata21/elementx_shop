@@ -17,9 +17,66 @@ const Register = () => {
     birthday: '',
   });
 
+  const [error, setError] = useState({
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    birthday: '',
+  });
+
+  const onInputChange = (e) => {
+    const { name, value } = e.target;
+    setUser((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+    validateInput(e);
+  };
+
+  const validateInput = (e) => {
+    let { name, value } = e.target;
+    setError((prev) => {
+      const stateObj = { ...prev, [name]: '' };
+
+      switch (name) {
+        case 'username':
+          if (!value) {
+            stateObj[name] = 'Por favor ingrese un email.';
+          }
+          break;
+
+        case 'password':
+          if (!value) {
+            stateObj[name] = 'Por favor ingrese su contraseña.';
+          } else if (user.confirmPassword && value !== user.confirmPassword) {
+            stateObj['confirmPassword'] = 'Las contraseña no coinciden.';
+          } else {
+            stateObj['confirmPassword'] = user.confirmPassword
+              ? ''
+              : error.confirmPassword;
+          }
+          break;
+
+        case 'confirmPassword':
+          if (!value) {
+            stateObj[name] = 'Por favor ingrese Confirmar Contraseña.';
+          } else if (user.password && value !== user.password) {
+            stateObj[name] = 'Las contraseña no coinciden.';
+          }
+          break;
+
+        default:
+          break;
+      }
+
+      return stateObj;
+    });
+  };
+
   const handleChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    verifyPassword(e);
   };
 
   const handleSubmit = async (e) => {
@@ -73,9 +130,14 @@ const Register = () => {
               required
               name="name"
               id="name"
-              onChange={handleChange}
+              onChange={onInputChange}
+              onBlur={validateInput}
               type="text"
+              value={user.name}
             />
+            <div className="password-error">
+              {error.name && <small className="err">{error.name}</small>}
+            </div>
           </div>
           <div className="form-control-container">
             <label htmlFor="surname">apellido</label>
@@ -83,9 +145,14 @@ const Register = () => {
               required
               name="surname"
               id="surname"
-              onChange={handleChange}
+              onChange={onInputChange}
+              onBlur={validateInput}
               type="text"
+              value={user.surname}
             />
+            <div className="password-error">
+              {error.surname && <small className="err">{error.surname}</small>}
+            </div>
           </div>
           <div className="form-control-container">
             <label htmlFor="email">correo electronico</label>
@@ -93,9 +160,16 @@ const Register = () => {
               required
               name="email"
               id="email"
-              onChange={handleChange}
+              onChange={onInputChange}
+              onBlur={validateInput}
               type="email"
+              value={user.email}
             />
+            <div className="password-error">
+              {error.email && (
+                <small className="err">{error.confirmPassword}</small>
+              )}
+            </div>
           </div>
           <div className="form-control-container">
             <label htmlFor="password">contraseña</label>
@@ -103,11 +177,15 @@ const Register = () => {
               required
               name="password"
               id="password"
-              onChange={handleChange}
+              onChange={onInputChange}
+              onBlur={validateInput}
               type="password"
+              value={user.password}
             />
             <div className="password-error">
-              {errorPassword && <span>Las contraseñas deben ser iguales</span>}
+              {error.password && (
+                <small className="err">{error.password}</small>
+              )}
             </div>
           </div>
           <div className="form-control-container">
@@ -116,12 +194,17 @@ const Register = () => {
               required
               name="confirmPassword"
               id="confirmPassword"
-              onChange={handleChange}
+              onChange={onInputChange}
+              onBlur={validateInput}
               type="password"
+              value={user.confirmPassword}
             />
             <div className="password-error">
-              {errorPassword && <span>Las contraseñas deben ser iguales</span>}
+              {error.confirmPassword && (
+                <small className="err">{error.confirmPassword}</small>
+              )}
             </div>
+            <div className="password-error"></div>
           </div>
           <div className="form-control-container">
             <label htmlFor="birthday">Fecha de nacimiento</label>
@@ -129,9 +212,16 @@ const Register = () => {
               required
               name="birthday"
               id="birthday"
-              onChange={handleChange}
+              onChange={onInputChange}
+              onBlur={validateInput}
               type="date"
+              value={user.birthday}
             />
+            <div className="password-error">
+              {error.birthday && (
+                <small className="err">{error.birthday}</small>
+              )}
+            </div>
           </div>
           <button disabled className="register-btn" type="submit">
             {isLoading ? (
