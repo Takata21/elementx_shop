@@ -85,6 +85,9 @@ const Register = () => {
       const userResponse = await signup(user);
       if (userResponse) {
         navigate('/login');
+        toast.success('Registrado correctamente', {
+          position: 'top-center',
+        });
       }
     } catch (error) {
       console.log(error);
@@ -223,7 +226,7 @@ const Register = () => {
               )}
             </div>
           </div>
-          <button disabled className="register-btn" type="submit">
+          <button className="register-btn" type="submit">
             {isLoading ? (
               <>
                 <TailSpin />
