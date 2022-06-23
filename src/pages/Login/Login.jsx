@@ -82,7 +82,7 @@ const Login = () => {
           <button
             className="register-btn"
             type="submit"
-            disabled={!user.email || user.password || isLoading}
+            disabled={!user.email || !user.password || isLoading}
           >
             {isLoading ? (
               <>

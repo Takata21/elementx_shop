@@ -1,0 +1,35 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-height: 650px;
+    padding: 25px;
+    border: 1px solid red;
+}
+
+.profile-details-container {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 15px;
+}
+
+.profile-details-data {
+    padding: 16px 0 4px 0;
+    border-bottom: 1px solid #ededed
+}
+
+.profile-details-data h6 {
+    font-weight: 600;
+}
+
+.profile-details-data div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+
+
+.profile-details-data div span {
+    display: inline-block;
+}

@@ -3,7 +3,6 @@ import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Cart from './pages/Cart/Cart';
 import HomePage from './pages/HomePage';
-import Profile from './pages/Profile';
 import Product from './pages/Product/Product';
 import { ProductProvider } from './context/provider/ProductsContext';
 import { AuthProvider } from './context/provider/AuthContext';
@@ -12,6 +11,7 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Copyright from './components/Copyright/Copyright';
 import { Toaster } from 'react-hot-toast';
+import Profile from './pages/profile/Profile';
 
 function App() {
   return (

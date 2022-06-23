@@ -95,7 +95,7 @@ const Cart = () => {
         </div>
 
         <div className="d-flex justify-content-end paypal-container">
-          <PaypalComponent />
+          {/* <PaypalComponent /> */}
         </div>
 
         {/* <button

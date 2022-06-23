@@ -1,6 +1,15 @@
 import React, { useRef, useState } from 'react';
 import './Header.css';
-import { FaBars, FaSearch, FaShoppingCart, FaUserCircle } from 'react-icons/fa';
+import {
+  FaBars,
+  FaSearch,
+  FaShoppingCart,
+  FaUserCircle,
+  FaAngleDown,
+  FaUserAlt,
+  FaChartPie,
+  FaSignOutAlt,
+} from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 
 import LateralMenu from '../LateralMenu/LateralMenu';
@@ -8,8 +17,9 @@ import { useAuth } from '../../context/provider/AuthContext';
 import { useCart } from '../../context/provider/CartContext';
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   let location = useLocation();
-  const { isLoggedIn, user } = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
   const { totalItems } = useCart();
   if (location.pathname !== '/login' && location.pathname !== '/register') {
     return (
@@ -49,15 +59,49 @@ const Header = () => {
           </div>
           <div className="header-profile-container">
             {isLoggedIn ? (
-              <Link to="/profile" className="header-login-btn">
-                <div className="header-login-l2">
-                  <img
-                    src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y"
-                    alt=""
-                  />
-                  <span className="">Hola, {user.name}</span>
+              <div
+                className="header-login-l2"
+                onClick={() => setShowMenu(!showMenu)}
+              >
+                <img
+                  src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y"
+                  alt=""
+                />
+                <FaAngleDown />
+                <div
+                  className={
+                    showMenu ? 'header-user-menu active' : 'header-user-menu'
+                  }
+                >
+                  <p className="header-user-name">
+                    Hola,
+                    <br />
+                    {user.name} <span></span>
+                    {user.surname}
+                  </p>
+
+                  <div>
+                    <Link to="/profile">
+                      <span className="icon-user-menu">
+                        <FaUserAlt />
+                      </span>
+                      <span> Mi Cuenta</span>
+                    </Link>
+                    <Link to="">
+                      <span className="icon-user-menu">
+                        <FaChartPie />
+                      </span>
+                      <span>Mis ordenes</span>
+                    </Link>
+                    <Link to="/" onClick={() => logout()}>
+                      <span className="icon-user-menu">
+                        <FaSignOutAlt />
+                      </span>
+                      <span>Cerrar sesión</span>
+                    </Link>
+                  </div>
                 </div>
-              </Link>
+              </div>
             ) : (
               <Link to="/login" className="header-login-btn">
                 <div className="header-login-l1">
