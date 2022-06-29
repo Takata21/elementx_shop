@@ -4,6 +4,7 @@ export const initialState = {
   items: [],
   totalItems: 0,
   totalPrice: 0,
+  direction: {},
 };
 
 export const initializer = (initialState = initialState) =>
@@ -67,6 +68,12 @@ export const cartReducer = (state = initialState, { type, payload }) => {
         items,
         totalPrice,
         totalItems: state.totalItems - payload.decrement,
+      };
+    }
+    case CartActions.ADD_ADDRESS: {
+      return {
+        ...state,
+        direction: payload,
       };
     }
     case CartActions.CLEAR_CART: {

@@ -50,10 +50,20 @@
 }
 
 .payment-btn {
+    display: flex;
+    justify-content: end;
+    border: 1px solid red;
     padding: 5px;
     border-radius: 5px;
     border: none;
     cursor: pointer;
+    background-color: #FF7E38;
+    color: white;
+}
+
+.payment-btn:disabled {
+    cursor: not-allowed;
+    color: red;
 }
 
 .payment-btn div {

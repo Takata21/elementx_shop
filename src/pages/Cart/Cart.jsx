@@ -13,17 +13,25 @@ import { useCart } from '../../context/provider/CartContext';
 import { useAuth } from '../../context/provider/AuthContext';
 import toast from 'react-hot-toast';
 import PaypalComponent from '../../components/PaypalButton/PaypalButton';
+import CartDirection from '../../components/CartDirection/CartDirection';
 const Cart = () => {
-  const { totalItems, items, totalPrice } = useCart();
+  const { totalItems, items, totalPrice, direction } = useCart();
   const { isLoggedIn } = useAuth();
+
   const handlePay = () => {
     if (!isLoggedIn) {
-      toast.error('NECESITA INICIAR SESIÓN PARA REALIZAR SU COMPRA', {
+      toast.error(' Necesita iniciar sesión', {
         style: {
           color: '#fff',
           background: '#dc3545',
         },
       });
+    } else if (items === 0) {
+      toast.error('Debe tener items en el carro para realizar una compra');
+    } else if ((direction.address = '')) {
+      toast.error('Complete el formulario de direccion');
+    } else {
+      hola;
     }
   };
   return (
@@ -52,6 +60,10 @@ const Cart = () => {
             ))}
           </div>
         )}
+      </div>
+      <div className="cart-direction-container">
+        <h3>Dirección de Entrega</h3>
+        <CartDirection />
       </div>
       <div className="card-payment">
         <div className="card-payment-head">
@@ -91,25 +103,27 @@ const Cart = () => {
 
         <div className="card-payment-total">
           <p className="">Total(Incl. taxes)</p>
-          <p className="">$ {new Intl.NumberFormat().format(totalPrice)}</p>
+          <p className="">
+            $ {new Intl.NumberFormat().format(totalPrice + 20)}
+          </p>
         </div>
 
         <div className="d-flex justify-content-end paypal-container">
           {/* <PaypalComponent /> */}
-        </div>
 
-        {/* <button
-          type="button"
-          className="payment-btn"
-          onClick={() => handlePay()}
-          disabled={totalPrice === 0}
-        >
-          <div className="">
-            <span>$ {new Intl.NumberFormat().format(totalPrice)}</span>
-            <span>Checkout</span>
-            <FaMoneyBillWave />
-          </div>
-        </button> */}
+          <button
+            type="button"
+            className="payment-btn"
+            onClick={() => handlePay()}
+            disabled={totalPrice === 0}
+          >
+            <div className="">
+              <span>$ {new Intl.NumberFormat().format(totalPrice)}</span>
+              <span>Checkout</span>
+              <FaMoneyBillWave />
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   );
