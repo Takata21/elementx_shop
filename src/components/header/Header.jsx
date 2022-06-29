@@ -10,6 +10,7 @@ import {
   FaChartPie,
   FaSignOutAlt,
 } from 'react-icons/fa';
+import { GrUserAdmin } from 'react-icons/gr';
 import { Link, useLocation } from 'react-router-dom';
 
 import LateralMenu from '../LateralMenu/LateralMenu';
@@ -99,6 +100,14 @@ const Header = () => {
                       </span>
                       <span>Cerrar sesión</span>
                     </Link>
+                    {isLoggedIn && user.isAdmin && user.isRoot && (
+                      <Link to="/ZCI6IjYyYWZjNjg3NjU5YTZk/admin">
+                        <span className="icon-user-menu">
+                          <GrUserAdmin />
+                        </span>
+                        <span>Admin Panel</span>
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

@@ -105,6 +105,103 @@
     background-color: #37bc9b;
 }
 
+.details-modal {
+    background: #ffffff;
+    border-radius: 0.5em;
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    left: 50vw;
+    max-width: 90%;
+    pointer-events: none;
+    position: fixed;
+    top: 50vh;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 30em;
+    text-align: left;
+    max-height: 90vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.details-modal .details-modal-close {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #111827;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 4.5em;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 4.5em;
+}
+
+.details-modal .details-modal-close svg {
+    display: block;
+}
+
+.details-modal .details-modal-title {
+    color: #111827;
+    padding: 1.5em 2em;
+    pointer-events: all;
+    position: relative;
+    width: calc(100% - 4.5em);
+}
+
+.details-modal .details-modal-title h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.details-modal .details-modal-content {
+    padding: 2em;
+    pointer-events: all;
+    overflow: auto;
+}
+
+.details-modal-overlay {
+    -webkit-transition: opacity 0.2s ease-out;
+    transition: opacity 0.2s ease-out;
+    pointer-events: none;
+    background: rgba(15, 23, 42, 0.8);
+    position: fixed;
+    opacity: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+details[open] .details-modal-overlay {
+    pointer-events: all;
+    opacity: 0.5;
+}
+
+details summary {
+    list-style: none;
+}
+
+details summary:focus {
+    outline: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
 .top-banner {
     background-image:
         linear-gradient(0deg, #fff 0%, rgba(255, 255, 255, 0.849) 40%, rgba(255, 255, 255, 0) 99%), url('https://res.cloudinary.com/du7mcjlgl/image/upload/v1655179649/banner2_x5ptoo.jpg');
