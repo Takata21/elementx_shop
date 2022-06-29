@@ -1,14 +1,19 @@
 .profile {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     gap: 30px;
-    min-height: 650px;
     padding: 25px;
-    border: 1px solid red;
+    background-color: #f4f6f8;
+    border-radius: 5px;
+}
+
+.profile-data-info {
+    max-width: 800px;
+    border-radius: 5px;
+
 }
 
 .profile-details-container {
-    border: 1px solid rgba(0, 0, 0, 0.125);
     padding: 15px;
 }
 
@@ -32,4 +37,38 @@
 
 .profile-details-data div span {
     display: inline-block;
+}
+
+
+.profile-details-img img {
+    display: block;
+    width: 200px;
+    border-radius: 50%;
+    margin: auto;
+
+}
+
+.profile-menu-container {
+    display: none;
+}
+
+@media screen and (min-width: 720px) {
+    .profile {
+        font-size: 1.2rem;
+
+    }
+
+    .profile-details-container {
+        border: 1px solid rgba(0, 0, 0, 0.125);
+    }
+
+    .profile-menu-container {
+        display: block;
+        width: 500px;
+    }
+
+    .profile-data-info {
+        width: 800px;
+        background-color: white;
+    }
 }

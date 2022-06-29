@@ -4,7 +4,6 @@ import './UserDashboard.css';
 const UserDashboard = () => {
   return (
     <>
-      <h4>My Dashboard</h4>
       <div className="dashboard-container">
         <Link to="/profile/orders" className="dashboard-card">
           <span className="dashboard-type">Pedidos</span>

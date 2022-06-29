@@ -9,6 +9,7 @@ import {
   FaUserAlt,
   FaChartPie,
   FaSignOutAlt,
+  FaHeadset,
 } from 'react-icons/fa';
 import { GrUserAdmin } from 'react-icons/gr';
 import { Link, useLocation } from 'react-router-dom';
@@ -94,12 +95,14 @@ const Header = () => {
                       </span>
                       <span>Mis ordenes</span>
                     </Link>
-                    <Link to="/" onClick={() => logout()}>
+
+                    <Link to="">
                       <span className="icon-user-menu">
-                        <FaSignOutAlt />
+                        <FaHeadset />
                       </span>
-                      <span>Cerrar sesión</span>
+                      <span>Soporte</span>
                     </Link>
+
                     {isLoggedIn && user.isAdmin && user.isRoot && (
                       <Link to="/ZCI6IjYyYWZjNjg3NjU5YTZk/admin">
                         <span className="icon-user-menu">
@@ -108,6 +111,12 @@ const Header = () => {
                         <span>Admin Panel</span>
                       </Link>
                     )}
+                    <Link to="/" onClick={() => logout()}>
+                      <span className="icon-user-menu">
+                        <FaSignOutAlt />
+                      </span>
+                      <span>Cerrar sesión</span>
+                    </Link>
                   </div>
                 </div>
               </div>
