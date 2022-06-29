@@ -1,0 +1,33 @@
+/*----------------reset-----------------*/
+.profile-menu * {
+    margin: 0;
+    padding: 0;
+}
+
+.profile-menu {
+    background-color: white;
+    width: 300px;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.profile-menu-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 15px auto;
+    padding: 5px 10px;
+    /* border-bottom: 1px solid #ededed; */
+    transition: color .33s ease-in-out;
+}
+
+.profile-menu-link.active {
+    color: #FF7E38;
+    text-decoration: underline;
+
+}
+
+.profile-menu-link:hover {
+    color: #FF7E38;
+
+}
