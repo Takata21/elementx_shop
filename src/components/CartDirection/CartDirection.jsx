@@ -19,7 +19,9 @@ const CartDirection = () => {
       direction.references === '' ||
       direction.additionalDesc === ''
     ) {
-      toast.error('Deber llenar todos los campos');
+      toast.error('Deber llenar todos los campos', {
+        position: 'bottom-right',
+      });
     } else {
       addDirection(direction);
       toast.success('Dirección Agregada correctamente', {
@@ -31,7 +33,8 @@ const CartDirection = () => {
     setDirection({ ...direction, [e.target.name]: e.target.value });
   };
   return (
-    <div className="col-md-4 col-xs-12 h-100 p-3 order-sm-2 order-xs-2 bg-light border rounded-3">
+    <div className="col-md-8 col-xs-12 h-100 p-3 order-sm-2 order-xs-2 bg-light border rounded-3">
+      <h3>Dirección de Entrega</h3>
       <form>
         <div className="col-md-12">
           <div className="input-group">
@@ -93,11 +96,12 @@ const CartDirection = () => {
             <label>Descripcion Adicional</label>
           </div>
         </div>
-        <div
-          className="d-flex justify-content-end paypal-container"
-          onClick={() => handleDirection()}
-        >
-          <button type="button" class="btn btn-success">
+        <div className="d-flex justify-content-end paypal-container">
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={() => handleDirection()}
+          >
             Aceptar
           </button>
         </div>

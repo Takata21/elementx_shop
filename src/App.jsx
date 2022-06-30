@@ -17,6 +17,7 @@ import Orders from './pages/Orders/Orders';
 import Budget from './pages/Budget/Budget';
 import Bills from './pages/Bills/Bills';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
+import OrderDetails from './components/OrderDetailsModal/OrderDetails';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           </ProductProvider>
           <Footer />
           <Copyright />
+          <OrderDetails />
         </CartProvider>
       </AuthProvider>
       <Toaster />

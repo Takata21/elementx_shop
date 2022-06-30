@@ -26,12 +26,10 @@ const Cart = () => {
           background: '#dc3545',
         },
       });
+      return;
     } else if (items === 0) {
       toast.error('Debe tener items en el carro para realizar una compra');
-    } else if ((direction.address = '')) {
-      toast.error('Complete el formulario de direccion');
-    } else {
-      hola;
+      return;
     }
   };
   return (
@@ -62,67 +60,66 @@ const Cart = () => {
         )}
       </div>
       <div className="cart-direction-container">
-        <h3>Dirección de Entrega</h3>
         <CartDirection />
-      </div>
-      <div className="card-payment">
-        <div className="card-payment-head">
-          <h5 className="">Detalles de compra</h5>
-          <img
-            src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y"
-            className="img-fluid rounded-3"
-            alt="Avatar"
-            width={'52px'}
-          />
-        </div>
-        <p className="">Aceptamos</p>
-        <div className="card-payment-types">
-          <span href="#!" type="submit" className="text-white">
-            <FaCcMastercard size="35px" />
-          </span>
-          <span href="#!" type="submit" className="text-white">
-            <FaCcVisa size="35px" />
-          </span>
-          <span href="#!" type="submit" className="text-white">
-            <FaCcPaypal size="35px" />
-          </span>
-          <a href="#!" type="submit" className="text-white"></a>
-        </div>
+        <div className="card-payment">
+          <div className="card-payment-head">
+            <h5 className="">Detalles de compra</h5>
+            <img
+              src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y"
+              className="img-fluid rounded-3"
+              alt="Avatar"
+              width={'52px'}
+            />
+          </div>
+          <p className="">Aceptamos</p>
+          <div className="card-payment-types">
+            <span href="#!" type="submit" className="text-white">
+              <FaCcMastercard size="35px" />
+            </span>
+            <span href="#!" type="submit" className="text-white">
+              <FaCcVisa size="35px" />
+            </span>
+            <span href="#!" type="submit" className="text-white">
+              <FaCcPaypal size="35px" />
+            </span>
+            <a href="#!" type="submit" className="text-white"></a>
+          </div>
 
-        <hr />
+          <hr />
 
-        <div className="card-payment-subtotal">
-          <p className="">Subtotal</p>
-          <p className="">$ {new Intl.NumberFormat().format(totalPrice)}</p>
-        </div>
+          <div className="card-payment-subtotal">
+            <p className="">Subtotal</p>
+            <p className="">$ {new Intl.NumberFormat().format(totalPrice)}</p>
+          </div>
 
-        <div className="card-payment-shipping">
-          <p className="">Shipping</p>
-          <p className="">$20.00</p>
-        </div>
+          <div className="card-payment-shipping">
+            <p className="">Shipping</p>
+            <p className="">$20.00</p>
+          </div>
 
-        <div className="card-payment-total">
-          <p className="">Total(Incl. taxes)</p>
-          <p className="">
-            $ {new Intl.NumberFormat().format(totalPrice + 20)}
-          </p>
-        </div>
+          <div className="card-payment-total">
+            <p className="">Total(Incl. taxes)</p>
+            <p className="">
+              $ {new Intl.NumberFormat().format(totalPrice + 20)}
+            </p>
+          </div>
 
-        <div className="d-flex justify-content-end paypal-container">
-          {/* <PaypalComponent /> */}
+          <div className="d-flex justify-content-end paypal-container">
+            <PaypalComponent />
 
-          <button
-            type="button"
-            className="payment-btn"
-            onClick={() => handlePay()}
-            disabled={totalPrice === 0}
-          >
-            <div className="">
-              <span>$ {new Intl.NumberFormat().format(totalPrice)}</span>
-              <span>Checkout</span>
-              <FaMoneyBillWave />
-            </div>
-          </button>
+            {/* <button
+              type="button"
+              className="payment-btn"
+              onClick={() => handlePay()}
+              disabled={totalPrice === 0}
+            >
+              <div className="">
+                <span>$ {new Intl.NumberFormat().format(totalPrice)}</span>
+                <span>Checkout</span>
+                <FaMoneyBillWave />
+              </div>
+            </button> */}
+          </div>
         </div>
       </div>
     </div>

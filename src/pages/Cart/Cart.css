@@ -8,6 +8,12 @@
 
 }
 
+.cart-direction-container {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+}
+
 .cart-items-head {
     display: flex;
     align-items: center;
@@ -85,6 +91,7 @@
 .paypal-container>div>div:nth-child(even) {
     display: none !important;
     border: 1px solid red;
+    margin-top: 2.5rem;
 }
 
 .card-payment-subtotal,
@@ -105,8 +112,12 @@
     .cart-container {
         width: 100%;
         margin: auto;
-        flex-direction: row;
 
+    }
+
+    .cart-direction-container {
+
+        flex-direction: row;
     }
 
     .cart-items {
