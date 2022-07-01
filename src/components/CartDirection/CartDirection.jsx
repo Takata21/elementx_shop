@@ -1,24 +1,17 @@
 import React, { useState } from 'react';
 import { useCart } from '../../context/provider/CartContext';
 import { toast } from 'react-hot-toast';
+import { RiErrorWarningLine } from 'react-icons/ri';
 const CartDirection = () => {
   const [direction, setDirection] = useState({
-    address: '',
-    aptHou: '',
+    subsidiary: '',
     province: 'Bocas del Toro',
-    references: '',
-    additionalDesc: '',
   });
 
   const { addDirection } = useCart();
 
   const handleDirection = () => {
-    if (
-      direction.address === '' ||
-      direction.aptHou === '' ||
-      direction.references === '' ||
-      direction.additionalDesc === ''
-    ) {
+    if (direction.subsidiary === '') {
       toast.error('Deber llenar todos los campos', {
         position: 'bottom-right',
       });
@@ -35,30 +28,8 @@ const CartDirection = () => {
   return (
     <div className="col-md-8 col-xs-12 h-100 p-3 order-sm-2 order-xs-2 bg-light border rounded-3">
       <h3>Dirección de Entrega</h3>
-      <form>
+      <form className="my-4">
         <div className="col-md-12">
-          <div className="input-group">
-            <input
-              onChange={handleChange}
-              type="text"
-              name="address"
-              required
-              placeholder=""
-            />
-            <label>Dirección </label>
-          </div>
-          <div className="d-flex">
-            <div className="input-group col">
-              <input
-                onChange={handleChange}
-                type="text"
-                name="aptHou"
-                required
-              />
-              <label>N° apto/casa</label>
-            </div>
-          </div>
-
           <div className="d-flex">
             <div className="input-group col pe-4">
               <select name="province" onChange={handleChange}>
@@ -75,27 +46,29 @@ const CartDirection = () => {
               </select>
               <label>Provincia</label>
             </div>
-            <div className="input-group col">
+            <div className="input-group">
               <input
                 onChange={handleChange}
                 type="text"
-                name="references"
+                name="subsidiary"
                 required
+                placeholder=""
               />
-              <label>Referencia</label>
+              <label>Sucursal</label>
             </div>
           </div>
           <div className="input-group">
             <input
               onChange={handleChange}
               type="text"
-              name="additionalDesc"
+              name="subsidiary"
               required
               placeholder=""
             />
-            <label>Descripcion Adicional</label>
+            <label>Información Adicional Importante</label>
           </div>
         </div>
+        <div className=""></div>
         <div className="d-flex justify-content-end paypal-container">
           <button
             type="button"
@@ -104,6 +77,21 @@ const CartDirection = () => {
           >
             Aceptar
           </button>
+        </div>
+        <div className="shipping-warning">
+          <small>
+            <a
+              href="http://unoexpresspanama.com/servicio/sucursales/"
+              target="_blank"
+              referrerPolicy="no-referrer"
+            >
+              Verificar sucursales de unoExpress
+            </a>
+          </small>
+        </div>
+        <div className="shipping-warning">
+          <small>Los envios son realizados por Unoexpress</small>
+          <RiErrorWarningLine />
         </div>
       </form>
     </div>

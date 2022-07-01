@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
 import './OrderDetails.css';
 import { useAuth } from '../../context/provider/AuthContext';
 import { useCart } from '../../context/provider/CartContext';
-import { FaWindowClose } from 'react-icons/fa';
-const OrderDetails = () => {
-  const [closeModal, setCloseModal] = useState(true);
+import { FaMoneyBillWave } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+const OrderDetails = ({ PaymentLink, closeModal, setCloseModal }) => {
+  const { user } = useAuth();
+  const { items, totalPrice, clearCart } = useCart();
+  let tax = 0;
+  let navigate = useNavigate();
+  tax = totalPrice * 0.07;
   const handleModal = () => {
     setCloseModal(!closeModal);
+    clearCart();
+    navigate('/');
   };
-  const { user } = useAuth();
-  const { items, totalPrice } = useCart();
-  let tax = 0;
 
-  tax = totalPrice * 0.07;
   return (
     <div
       className={
@@ -25,14 +27,14 @@ const OrderDetails = () => {
         <div className="modal-dialog">
           <div className="modal-content" style={{ borderRadius: '0px' }}>
             <div className="modal-body ">
-              <div className="order_details-right">
+              {/* <div className="order_details-right">
                 <button
                   className="order_details-close_btn"
                   onClick={() => handleModal()}
                 >
                   <FaWindowClose />
                 </button>
-              </div>
+              </div> */}
 
               <div className="px-4 py-4">
                 <div className="" style={{ marginBottom: '10px' }}>
@@ -50,9 +52,9 @@ const OrderDetails = () => {
                 <h5 className="text-uppercase">{`${user?.name} ${user?.surname}`}</h5>
 
                 {/* <h4 className="mt-5 theme-color mb-5">Thanks for your order</h4> */}
-                <h4 className="mt-5 theme-color mb-5">Gracias por su compra</h4>
+                <h4 className="mt-5 theme-color mb-5">Verifique su Compra</h4>
 
-                <span className="theme-color">Resumen de pago</span>
+                <span className="theme-color">Resumen de compra</span>
                 {/* <span className="theme-color">Payment Summary</span> */}
                 <div className="mb-3">
                   <hr className="new2" />
@@ -91,12 +93,15 @@ const OrderDetails = () => {
                 </div>
 
                 <div className="text-center mt-5">
-                  <button
-                    className="btn btn-primary"
+                  <a
+                    href={PaymentLink}
+                    className="order_details-btn"
+                    referrerPolicy="no-referrer"
                     onClick={() => handleModal()}
                   >
-                    Aceptar
-                  </button>
+                    Pagar
+                    <FaMoneyBillWave />
+                  </a>
                 </div>
               </div>
             </div>

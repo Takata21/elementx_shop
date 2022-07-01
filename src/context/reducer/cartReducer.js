@@ -1,6 +1,8 @@
 import { CartActions } from '../actions/cartActions';
+import { v4 as uuidv4 } from 'uuid';
 
 export const initialState = {
+  cart_id: uuidv4(),
   items: [],
   totalItems: 0,
   totalPrice: 0,

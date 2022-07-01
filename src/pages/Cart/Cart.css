@@ -67,6 +67,15 @@
     color: white;
 }
 
+.payment-btn svg {
+    width: 30px;
+    height: 25px;
+}
+
+.payment-btn:hover {
+    background-color: #fc742c;
+}
+
 .payment-btn:disabled {
     cursor: not-allowed;
     color: red;

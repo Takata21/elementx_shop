@@ -4,7 +4,6 @@
 }
 
 .order_details-close_btn {
-    border: 1px solid red;
     margin: 0;
     padding: 0;
     border: none;
@@ -37,4 +36,16 @@
     display: flex;
     justify-content: end;
     margin: 10px 10px 0 0;
+}
+
+.order_details-btn {
+    display: flex;
+    align-items: center;
+    width: 82px;
+    gap: 5px;
+    margin: auto;
+    background-color: rgb(0, 173, 181);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
