@@ -215,3 +215,19 @@ details summary::-webkit-details-marker {
     margin-top: -250px;
 
 }
+
+.shipping-warning {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    margin-top: 10px;
+    border: 1px solid #fde4b6;
+    background-color: #f8f2e7;
+    color: #5f3e01;
+}
+
+.shipping-warning a {
+    text-decoration: underline;
+    color: #5f3e01;
+}

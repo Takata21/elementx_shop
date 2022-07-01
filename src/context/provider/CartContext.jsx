@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { initializer, cartReducer, initialState } from '../reducer/cartReducer';
 import { CartActions } from '../actions/cartActions';
-
+import { createOrder } from '../../api/order';
 const CartContext = createContext(initialState);
 export const useCart = () => {
   const context = useContext(CartContext);
@@ -47,6 +47,13 @@ export const CartProvider = ({ children }) => {
     });
   };
 
+  const addDirection = (address) => {
+    dispatch({
+      type: CartActions.ADD_ADDRESS,
+      payload: address,
+    });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -55,6 +62,7 @@ export const CartProvider = ({ children }) => {
         removeItem,
         clearCart,
         decrementItem,
+        addDirection,
       }}
     >
       {children}

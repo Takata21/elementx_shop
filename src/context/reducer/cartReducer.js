@@ -1,9 +1,12 @@
 import { CartActions } from '../actions/cartActions';
+import { v4 as uuidv4 } from 'uuid';
 
 export const initialState = {
+  cart_id: uuidv4(),
   items: [],
   totalItems: 0,
   totalPrice: 0,
+  direction: {},
 };
 
 export const initializer = (initialState = initialState) =>
@@ -67,6 +70,12 @@ export const cartReducer = (state = initialState, { type, payload }) => {
         items,
         totalPrice,
         totalItems: state.totalItems - payload.decrement,
+      };
+    }
+    case CartActions.ADD_ADDRESS: {
+      return {
+        ...state,
+        direction: payload,
       };
     }
     case CartActions.CLEAR_CART: {

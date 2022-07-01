@@ -17,6 +17,7 @@ import Orders from './pages/Orders/Orders';
 import Budget from './pages/Budget/Budget';
 import Bills from './pages/Bills/Bills';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
+import ConfirmationOrder from './components/ConfirmationOrder/ConfirmationOrder';
 
 function App() {
   return (
@@ -40,6 +41,11 @@ function App() {
                 path="/ZCI6IjYyYWZjNjg3NjU5YTZk/admin"
                 exact
                 element={<AdminPage />}
+              />
+              <Route
+                path="/confirm-order/:id"
+                exact
+                element={<ConfirmationOrder />}
               />
             </Routes>
           </ProductProvider>

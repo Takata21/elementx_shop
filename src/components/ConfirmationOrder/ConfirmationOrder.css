@@ -1,0 +1,50 @@
+.confirmation_modal {
+    width: 95%;
+    margin: auto 2.875rem;
+    padding: 25px;
+    background-color: white;
+}
+
+.confirmation_modal-btn {
+    display: inline-block;
+    margin: 10px auto;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #ff6300;
+    color: white;
+    text-transform: uppercase;
+    font-size: .8rem;
+    font-weight: 700;
+    transition: background-color .5s ease-in-out;
+}
+
+.confirmation_modal-btn:hover {
+    background-color: #c95208;
+    color: white;
+}
+
+.confirmation_details-container {
+    min-height: 650px;
+    background-color: #e1e1e1;
+    text-align: center;
+    transition: .5s visibility ease-in-out;
+}
+
+.confirmation_modal-gratitude {
+    font-weight: 700;
+    margin: 10px auto;
+}
+
+.confirmation_modal-id {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+
+
+
+.confirmation_details-container.active {
+    display: flex;
+    visibility: visible;
+}
