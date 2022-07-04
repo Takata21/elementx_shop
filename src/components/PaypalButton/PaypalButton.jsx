@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/provider/CartContext';
-const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
+// const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
 const PaypalComponent = () => {
   let navigate = useNavigate();

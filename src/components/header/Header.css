@@ -118,7 +118,7 @@
 
 .header-user-menu.active {
     visibility: visible;
-    height: 270px;
+    min-height: 230px;
 
 }
 

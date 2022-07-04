@@ -18,6 +18,7 @@ import Budget from './pages/Budget/Budget';
 import Bills from './pages/Bills/Bills';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import ConfirmationOrder from './components/ConfirmationOrder/ConfirmationOrder';
+import ContactPage from './pages/ContactPage/ContactPage';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
               <Route path="/product/:id" exact element={<Product />} />
               <Route path="/login" exact element={<Login />} />
               <Route path="/register" exact element={<Register />} />
+              <Route path="/contact" exact element={<ContactPage />} />
+
               <Route
                 path="/ZCI6IjYyYWZjNjg3NjU5YTZk/admin"
                 exact

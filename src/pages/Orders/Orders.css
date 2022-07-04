@@ -1,0 +1,107 @@
+.orders-container {
+    min-height: 550px;
+    display: flex;
+}
+
+.orders {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid red;
+    background-color: #fafafa;
+}
+
+.orders-head {
+    background-color: white;
+}
+
+.orders-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    text-transform: capitalize;
+}
+
+.orders-left h3 {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.orders-left small {
+    font-weight: 500;
+    color: #616364;
+    /* color: #acb0b4; */
+}
+
+.orders-filters {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.orders-filters-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px;
+}
+
+.orders-search input {
+    width: 400px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #d9d9d9;
+}
+
+.order-select {
+    color: #7e7c7c;
+    font-weight: 500;
+}
+
+.orders_items-container {
+    padding: 9px;
+}
+
+.orders_items-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.orders_items-container td,
+.orders_items-container th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+
+.orders_items-container tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+.orders_items-container tr:nth-child(even):hover {
+    background-color: rgba(0, 173, 181, .1);
+}
+
+.orders-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.orders-pagination button {
+    padding: 5px 10px;
+    font-weight: 500;
+    border: 1px solid #dddddd;
+    background-color: transparent;
+    transition: .5s background ease-in-out;
+
+}
+
+.orders-pagination button:hover {
+    background: #2d67ec;
+    color: white;
+}

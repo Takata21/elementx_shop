@@ -31,3 +31,11 @@
     color: #FF7E38;
 
 }
+
+
+
+@media screen and (min-width: 720px) {
+    .profile-menu {
+        font-size: 1.2rem;
+    }
+}

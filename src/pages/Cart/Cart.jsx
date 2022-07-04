@@ -12,7 +12,7 @@ import CartCard from '../../components/CartCards/CartCard';
 import { useCart } from '../../context/provider/CartContext';
 import { useAuth } from '../../context/provider/AuthContext';
 import toast from 'react-hot-toast';
-import PaypalComponent from '../../components/PaypalButton/PaypalButton';
+// import PaypalComponent from '../../components/PaypalButton/PaypalButton';
 import CartDirection from '../../components/CartDirection/CartDirection';
 import { createOrder } from '../../api/order';
 import OrderDetails from '../../components/OrderDetailsModal/OrderDetails';

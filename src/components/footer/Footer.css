@@ -1,3 +1,7 @@
+footer {
+    margin-top: 45px;
+}
+
 .footer-email {
     display: flex;
     flex-direction: column;

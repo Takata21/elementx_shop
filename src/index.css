@@ -37,6 +37,14 @@ a:hover {
 
 }
 
+.h-270 {
+  height: 270px;
+}
+
+.main {
+  height: 700px;
+}
+
 @media screen and (min-width: 720px) {
 
   .products-card-container {
