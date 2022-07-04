@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Product.css';
-import { FaShoppingCart } from 'react-icons/fa';
+import { FaHeart, FaShareAlt, FaShoppingCart } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { toast } from 'react-hot-toast';
@@ -13,6 +13,7 @@ const Product = () => {
 
   const [product, setProduct] = useState({});
   const { appendItemToCart } = useCart();
+
   useEffect(() => {
     const loadProduct = async () => {
       const product = await getProduct(params.id);
@@ -20,6 +21,17 @@ const Product = () => {
     };
     loadProduct();
   }, [params]);
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: product.name,
+        url: 'http://localhost:3000/product/62a7fbd89b27c632b6bc26d6',
+      });
+    }
+  };
+
+  const handleWish = () => {};
 
   const handleCart = (product) => {
     appendItemToCart(product);
@@ -64,13 +76,26 @@ const Product = () => {
           <img src="/assets/img/unoexpress.png" alt="unoexpress" />
         </div>
         <p className="product-page-price">$ {product.price}</p>
-        <button
-          className="product-page-add-to-cart"
-          onClick={() => handleCart(product)}
-        >
-          <FaShoppingCart />
-          <span>Agregar al carrito de compra</span>
-        </button>
+        <div className="product-buttons-container">
+          <button
+            className="product-page-add-to-cart"
+            onClick={() => handleCart(product)}
+          >
+            <FaShoppingCart />
+            <span>Agregar al carrito de compra</span>
+          </button>
+          <button className="product-page-share" onClick={() => handleShare()}>
+            <FaShareAlt />
+            <span>Compartir</span>
+          </button>
+          <button
+            className="product-page-add_wishlist"
+            onClick={() => handleWish()}
+          >
+            <FaHeart />
+            <span>Agregar al Favoritos</span>
+          </button>
+        </div>
       </div>
     </div>
   );

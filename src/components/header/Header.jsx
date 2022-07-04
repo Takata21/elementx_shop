@@ -21,7 +21,12 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   let location = useLocation();
-  const { isLoggedIn, user, logout } = useAuth();
+  const {
+    isLoggedIn,
+    user,
+    user: { isRoot, isAdmin },
+    logout,
+  } = useAuth();
   const { totalItems } = useCart();
   if (location.pathname !== '/login' && location.pathname !== '/register') {
     return (
@@ -72,8 +77,13 @@ const Header = () => {
                 <FaAngleDown />
                 <div
                   className={
-                    showMenu ? 'header-user-menu active' : 'header-user-menu'
+                    showMenu
+                      ? ' h-270 header-user-menu active'
+                      : 'header-user-menu'
                   }
+                  style={{
+                    minHeight: isRoot && isAdmin ? '270px' : '230px',
+                  }}
                 >
                   <p className="header-user-name">
                     Hola,
@@ -89,14 +99,14 @@ const Header = () => {
                       </span>
                       <span> Mi Cuenta</span>
                     </Link>
-                    <Link to="">
+                    <Link to="/profile/orders">
                       <span className="icon-user-menu">
                         <FaChartPie />
                       </span>
                       <span>Mis ordenes</span>
                     </Link>
 
-                    <Link to="">
+                    <Link to="/contact">
                       <span className="icon-user-menu">
                         <FaHeadset />
                       </span>

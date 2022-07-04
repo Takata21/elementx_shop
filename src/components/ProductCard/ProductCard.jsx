@@ -29,7 +29,9 @@ const ProductCard = ({ product }) => {
 
             <Valoration number={product.rating} />
             <div className="product-card-footer">
-              <p className="product-card-price">$ {product.price}</p>
+              <p className="product-card-price">
+                $ {new Intl.NumberFormat().format(product.price)}
+              </p>
               {/* <button>
                 <BsCart4 />
                 Agregar al carrito
