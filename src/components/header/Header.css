@@ -105,20 +105,17 @@
     flex-direction: column;
     gap: 5px;
     width: 170px;
-    max-height: 270px;
     border-radius: 5px;
     border: solid 1px #ededed;
     background: white;
     visibility: hidden;
     transition: .5s ease-in-out;
     overflow: hidden;
-    height: 0px;
 
 }
 
 .header-user-menu.active {
     visibility: visible;
-    min-height: 230px;
 
 }
 

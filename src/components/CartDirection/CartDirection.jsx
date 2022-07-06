@@ -8,6 +8,9 @@ const CartDirection = () => {
     province: 'Bocas del Toro',
   });
 
+  // if(direction.subsidiary!==){
+
+  // }
   const { addDirection } = useCart();
 
   const handleDirection = () => {

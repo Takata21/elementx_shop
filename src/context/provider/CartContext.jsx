@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { initializer, cartReducer, initialState } from '../reducer/cartReducer';
 import { CartActions } from '../actions/cartActions';
-import { createOrder } from '../../api/order';
 const CartContext = createContext(initialState);
 export const useCart = () => {
   const context = useContext(CartContext);

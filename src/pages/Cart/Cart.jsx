@@ -1,56 +1,19 @@
 import React, { useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 import './Cart.css';
-import {
-  FaCcMastercard,
-  FaCcVisa,
-  FaCcPaypal,
-  FaMoneyBillWave,
-} from 'react-icons/fa';
+import { FaCcMastercard, FaCcVisa, FaCcPaypal } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import CartCard from '../../components/CartCards/CartCard';
 import { useCart } from '../../context/provider/CartContext';
 import { useAuth } from '../../context/provider/AuthContext';
 import toast from 'react-hot-toast';
-// import PaypalComponent from '../../components/PaypalButton/PaypalButton';
+import PaypalComponent from '../../components/PaypalButton/PaypalButton';
 import CartDirection from '../../components/CartDirection/CartDirection';
-import { createOrder } from '../../api/order';
-import OrderDetails from '../../components/OrderDetailsModal/OrderDetails';
 const Cart = () => {
-  const [closeModal, setCloseModal] = useState(true);
-  const [loading, setLoading] = useState(false);
   const [PaymentLink, setPaymentLink] = useState('');
   const { cart_id, totalItems, items, totalPrice, direction } = useCart();
   const { isLoggedIn } = useAuth();
   let navigate = useNavigate();
-
-  const cartOrder = async () => {
-    setLoading(true);
-    const province = direction.province;
-    const subsidiary = direction.subsidiary;
-    const initialValue = '';
-    let desc = items.reduce(
-      (prev, current) => `${prev}, ${current.name}`,
-      initialValue
-    );
-    desc = desc.substring(2);
-    try {
-      const res = await createOrder({
-        cart_id,
-        totalItems,
-        totalPrice,
-        province,
-        subsidiary,
-        desc,
-      });
-      const { href } = res?.data;
-      setPaymentLink(href);
-      setCloseModal(!closeModal);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handlePay = () => {
     if (!isLoggedIn) {
@@ -67,15 +30,14 @@ const Cart = () => {
       toast.error('Debe agregar una direccion de envio');
       return;
     }
-    cartOrder();
   };
   return (
     <div className="cart-container">
-      <OrderDetails
+      {/* <OrderDetails
         setCloseModal={setCloseModal}
         closeModal={closeModal}
         PaymentLink={PaymentLink}
-      />
+      /> */}
 
       <div className="cart-items">
         <div className="cart-items-head">
@@ -151,27 +113,7 @@ const Cart = () => {
           </div>
 
           <div className="d-flex justify-content-end paypal-container">
-            {/* <PaypalComponent /> */}
-
-            <button
-              type="button"
-              className="payment-btn"
-              onClick={() => handlePay()}
-              disabled={totalPrice === 0 || loading}
-            >
-              {loading ? (
-                <>
-                  <TailSpin />
-                  <span>cargando</span>
-                </>
-              ) : (
-                <div className="">
-                  <span>$ {new Intl.NumberFormat().format(totalPrice)}</span>
-                  <span>Checkout</span>
-                  <FaMoneyBillWave />
-                </div>
-              )}
-            </button>
+            <PaypalComponent />
           </div>
         </div>
       </div>

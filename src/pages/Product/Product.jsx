@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Product.css';
-import { FaHeart, FaShareAlt, FaShoppingCart } from 'react-icons/fa';
+import { FaHeart, FaShareAlt, FaCartPlus } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { toast } from 'react-hot-toast';
@@ -81,8 +81,8 @@ const Product = () => {
             className="product-page-add-to-cart"
             onClick={() => handleCart(product)}
           >
-            <FaShoppingCart />
-            <span>Agregar al carrito de compra</span>
+            <span>Agregar</span>
+            <FaCartPlus />
           </button>
           <button className="product-page-share" onClick={() => handleShare()}>
             <FaShareAlt />

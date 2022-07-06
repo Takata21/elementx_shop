@@ -105,7 +105,7 @@ const Register = () => {
   if (isLoggedIn) {
     return (
       <div className="register">
-        <h1>Unauthorized</h1>
+        <h1>Cargando....</h1>
       </div>
     );
   }

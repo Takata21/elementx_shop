@@ -7,6 +7,7 @@ import Product from './pages/Product/Product';
 import { ProductProvider } from './context/provider/ProductsContext';
 import { AuthProvider } from './context/provider/AuthContext';
 import { CartProvider } from './context/provider/CartContext';
+import { OrderProvider } from './context/provider/OrderContext';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Copyright from './components/Copyright/Copyright';
@@ -27,30 +28,32 @@ function App() {
         <CartProvider>
           <Header />
           <ProductProvider>
-            <Routes>
-              <Route path="/" exact element={<HomePage />} />
-              <Route path="/cart" exact element={<Cart />} />
-              <Route path="/profile" exact element={<Profile />} />
-              <Route path="/profile/orders" exact element={<Orders />} />
-              <Route path="/profile/bills" exact element={<Bills />} />
-              <Route path="/profile/budget" exact element={<Budget />} />
-              <Route path="/profile/edit" exact element={<ProfileEdit />} />
-              <Route path="/product/:id" exact element={<Product />} />
-              <Route path="/login" exact element={<Login />} />
-              <Route path="/register" exact element={<Register />} />
-              <Route path="/contact" exact element={<ContactPage />} />
+            <OrderProvider>
+              <Routes>
+                <Route path="/" exact element={<HomePage />} />
+                <Route path="/cart" exact element={<Cart />} />
+                <Route path="/profile" exact element={<Profile />} />
+                <Route path="/profile/orders" exact element={<Orders />} />
+                <Route path="/profile/bills" exact element={<Bills />} />
+                <Route path="/profile/budget" exact element={<Budget />} />
+                <Route path="/profile/edit" exact element={<ProfileEdit />} />
+                <Route path="/product/:id" exact element={<Product />} />
+                <Route path="/login" exact element={<Login />} />
+                <Route path="/register" exact element={<Register />} />
+                <Route path="/contact" exact element={<ContactPage />} />
 
-              <Route
-                path="/ZCI6IjYyYWZjNjg3NjU5YTZk/admin"
-                exact
-                element={<AdminPage />}
-              />
-              <Route
-                path="/confirm-order/:id"
-                exact
-                element={<ConfirmationOrder />}
-              />
-            </Routes>
+                <Route
+                  path="/ZCI6IjYyYWZjNjg3NjU5YTZk/admin"
+                  exact
+                  element={<AdminPage />}
+                />
+                <Route
+                  path="/confirm-order/:id"
+                  exact
+                  element={<ConfirmationOrder />}
+                />
+              </Routes>
+            </OrderProvider>
           </ProductProvider>
           <Footer />
           <Copyright />

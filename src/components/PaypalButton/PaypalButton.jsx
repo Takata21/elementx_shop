@@ -3,11 +3,39 @@ import ReactDOM from 'react-dom';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/provider/CartContext';
-// const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
+import { useOrders } from '../../context/provider/OrderContext';
+const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
 const PaypalComponent = () => {
   let navigate = useNavigate();
-  const { clearCart, items } = useCart();
+  const { clearCart, items, cart_id, direction, totalItems } = useCart();
+  const { addNewOrder } = useOrders();
+
+  const handleOrder = async (action) => {
+    let products = [];
+    products = items.map((item) => ({ id: item._id, quantity: item.quantity }));
+    products = JSON.stringify(products);
+
+    try {
+      const { id, payer, purchase_units } = action;
+      const res = await addNewOrder({
+        paymentId: id,
+        email: payer.email_address,
+        name: payer.name.given_name + ' ' + payer.name.surname,
+        payer_id: payer.payer_id,
+        amount: purchase_units[0].amount.value,
+        currency: purchase_units[0].amount.currency_code,
+        cart_id: cart_id,
+        products: products,
+        province: direction.province,
+        subsidiary: direction.subsidiary,
+        totalItems: totalItems,
+      });
+      return res.data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const createOrder = (data, actions) => {
     const cart = JSON.parse(localStorage.getItem('etx_cart'));
@@ -35,12 +63,20 @@ const PaypalComponent = () => {
   };
 
   const onApprove = async (data, actions) => {
-    await actions.order.capture();
-    clearCart();
-    navigate('/');
-    toast.success('Successfull Payment', {
-      duration: 5000,
-    });
+    const action = await actions.order.capture();
+    if (action.status === 'COMPLETED') {
+      const res = await handleOrder(action);
+      console.log(
+        '🚀 ~ file: PaypalButton.jsx ~ line 70 ~ onApprove ~ res',
+        res
+      );
+
+      if (res._id) {
+        toast.success('Compra realizada con exito');
+        clearCart();
+        navigate('/');
+      }
+    }
   };
 
   return (
