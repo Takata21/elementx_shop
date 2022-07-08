@@ -20,6 +20,7 @@ import Bills from './pages/Bills/Bills';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import ConfirmationOrder from './components/ConfirmationOrder/ConfirmationOrder';
 import ContactPage from './pages/ContactPage/ContactPage';
+import EmailVerificationRequired from './pages/EmailVerificationRequired/EmailVerificationRequired';
 
 function App() {
   return (
@@ -40,6 +41,11 @@ function App() {
                 <Route path="/product/:id" exact element={<Product />} />
                 <Route path="/login" exact element={<Login />} />
                 <Route path="/register" exact element={<Register />} />
+                <Route
+                  path="/register/email_verification_required"
+                  exact
+                  element={<EmailVerificationRequired />}
+                />
                 <Route path="/contact" exact element={<ContactPage />} />
 
                 <Route
@@ -64,4 +70,5 @@ function App() {
   );
 }
 
+// breadcrum
 export default App;

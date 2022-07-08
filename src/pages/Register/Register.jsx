@@ -84,7 +84,7 @@ const Register = () => {
     try {
       const userResponse = await signup(user);
       if (userResponse) {
-        navigate('/login');
+        navigate('/register/email_verification_required');
         toast.success('Registrado correctamente', {
           position: 'top-center',
         });
