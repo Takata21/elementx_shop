@@ -3,6 +3,7 @@ import { createContext, useEffect, useReducer, useContext } from 'react';
 import { initialState, orderReducer } from '../reducer/orderReducer';
 import { ordersActions } from '../actions/ordersActions';
 import { createOrder } from '../../api/orderAPI/';
+import { getOrders } from '../../api/orderAPI';
 export const OrderContext = createContext(initialState);
 
 export const useOrders = () => {
@@ -13,9 +14,27 @@ export const useOrders = () => {
 export const OrderProvider = ({ children }) => {
   const [state, dispatch] = useReducer(orderReducer, initialState);
 
-  const loadOrders = async () => {};
+  const loadOrders = async () => {
+    dispatch({ type: ordersActions.LOAD_ORDERS });
+    try {
+      const res = await getOrders();
+      if (res.data) {
+        dispatch({
+          type: ordersActions.LOAD_ORDERS_SUCCESS,
+          payload: res.data,
+        });
+      }
+    } catch (error) {
+      dispatch({
+        type: ordersActions.LOAD_ORDERS_ERROR,
+        payload: error.message,
+      });
+    }
+  };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    loadOrders();
+  }, []);
 
   const addNewOrder = async ({
     id,
@@ -30,6 +49,14 @@ export const OrderProvider = ({ children }) => {
     subsidiary,
     totalItems,
   }) => {
+    console.log(
+      '🚀 ~ file: OrderContext.jsx ~ line 52 ~ OrderProvider ~ subsidiary',
+      subsidiary
+    );
+    console.log(
+      '🚀 ~ file: OrderContext.jsx ~ line 52 ~ OrderProvider ~ province',
+      province
+    );
     dispatch({ type: ordersActions.LOAD_SAVE_ORDER });
     try {
       const res = await createOrder({

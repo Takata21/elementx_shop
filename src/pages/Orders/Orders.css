@@ -1,12 +1,12 @@
 .orders-container {
     min-height: 550px;
     display: flex;
+    margin: 15px auto;
 }
 
 .orders {
     width: 100%;
     padding: 12px;
-    border: 1px solid red;
     background-color: #fafafa;
 }
 
@@ -40,13 +40,19 @@
 
 .orders-filters-container {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 9px;
 }
 
+.orders-search {
+    width: 100%;
+    margin: 15px auto;
+}
+
 .orders-search input {
-    width: 400px;
+    width: 100%;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #d9d9d9;
@@ -58,38 +64,19 @@
 }
 
 .orders_items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     padding: 9px;
 }
 
-.orders_items-container table {
-    width: 100%;
-    border-collapse: collapse;
-}
 
-
-.orders_items-container td,
-.orders_items-container th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-    text-transform: capitalize;
-    cursor: pointer;
-}
-
-
-.orders_items-container tr:nth-child(even) {
-    background-color: #dddddd;
-}
-
-
-.orders_items-container tr:nth-child(even):hover {
-    background-color: rgba(0, 173, 181, .1);
-}
 
 .orders-pagination {
     display: flex;
     align-items: center;
     justify-content: end;
+    margin: 15px auto;
 }
 
 .orders-pagination button {
@@ -104,4 +91,22 @@
 .orders-pagination button:hover {
     background: #2d67ec;
     color: white;
+}
+
+
+@media screen and (min-width: 720px) {
+    .orders-filters-container {
+        flex-direction: row;
+    }
+
+    .orders-search {
+        width: 100%;
+        margin: 15px auto;
+    }
+
+    .orders-search input {
+        width: 60%;
+    }
+
+
 }

@@ -18,7 +18,7 @@ export const orderReducer = (state, actions) => {
       return {
         ...state,
         isLoading: false,
-        products: payload,
+        orders: payload,
       };
     case ordersActions.LOAD_ORDERS_ERROR:
       return {
@@ -35,7 +35,7 @@ export const orderReducer = (state, actions) => {
       return {
         ...state,
         isLoading: false,
-        products: [...state.products, payload],
+        orders: [...state.orders, payload],
       };
     case ordersActions.LOAD_SAVE_ORDERS_ERROR:
       return {
@@ -56,7 +56,7 @@ export const orderReducer = (state, actions) => {
     case ordersActions.DELETE_ORDERS_SUCCESS:
       return {
         ...state,
-        products: state.products.filter((product) => product._id !== payload),
+        orders: state.orders.filter((order) => order._id !== payload),
         isLoading: false,
       };
     case ordersActions.DELETE_ORDERS_ERROR:

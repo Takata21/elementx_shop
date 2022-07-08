@@ -9,9 +9,11 @@ const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
 const PaypalComponent = () => {
   let navigate = useNavigate();
   const { clearCart, items, cart_id, direction, totalItems } = useCart();
+
   const { addNewOrder } = useOrders();
 
   const handleOrder = async (action) => {
+    const { subsidiary, province } = direction;
     let products = [];
     products = items.map((item) => ({ id: item._id, quantity: item.quantity }));
     products = JSON.stringify(products);
@@ -27,8 +29,8 @@ const PaypalComponent = () => {
         currency: purchase_units[0].amount.currency_code,
         cart_id: cart_id,
         products: products,
-        province: direction.province,
-        subsidiary: direction.subsidiary,
+        province: province,
+        subsidiary: subsidiary,
         totalItems: totalItems,
       });
       return res.data;

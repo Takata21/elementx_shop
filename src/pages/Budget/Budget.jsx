@@ -41,33 +41,17 @@ const Budget = () => {
           </div>
         </div>
         <div className="orders_items-container">
-          <table>
-            <thead>
-              <tr>
-                <th>ID Orden</th>
-                <th>Usuario</th>
-                <th>Email</th>
-                <th>fecha</th>
-                <th>precio</th>
-                <th>dirección</th>
-                <th>estado</th>
-                {/* <th>acciones</th> */}
-              </tr>
-            </thead>
-            <tbody>
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-            </tbody>
-          </table>
+          <OrderItem />
+          <OrderItem />
+          <OrderItem />
+          <OrderItem />
+          <OrderItem />
+          <OrderItem />
+          <OrderItem />
+          <OrderItem />
+          <OrderItem />
+          <OrderItem />
+          <OrderItem />
         </div>
         <div className="orders-pagination">
           <button>Anterior</button>

@@ -1,0 +1,112 @@
+.item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background-color: #f6f6f6;
+    color: #494848;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+}
+
+.itemLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.itemRight {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    flex-direction: column;
+    text-transform: capitalize;
+}
+
+.itemRight a {
+
+    color: #0074cc;
+}
+
+.itemRight a:hover {
+    color: #0074cc;
+    text-decoration: underline;
+}
+
+.orderCell {}
+
+.orderCell span {
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.orderCell p {
+    text-transform: capitalize;
+}
+
+.complete {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15%;
+    background-color: #e6f7e8;
+    color: #38c74a;
+    font-weight: 600;
+}
+
+.pending {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15%;
+    background-color: #fff3e8;
+    color: #ffb560;
+    font-weight: 600;
+}
+
+.rejected {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15%;
+    background-color: #feebeb;
+    color: #fa6161;
+    font-weight: 600;
+}
+
+.orderNumberContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.orderNumber {
+    display: flex;
+    gap: 5px;
+
+}
+
+.orderNumber span {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.orderNumber p {
+    font-weight: 400;
+}
+
+@media screen and (min-width: 720px) {
+    .item {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .itemLeft {
+        align-items: center;
+        width: 50%;
+        justify-content: space-around;
+        flex-direction: row;
+    }
+
+    .orderCell p {
+
+        margin: 0 auto;
+    }
+
+}

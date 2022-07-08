@@ -10,6 +10,8 @@ import {
   FaChartPie,
   FaSignOutAlt,
   FaHeadset,
+  FaShoppingBag,
+  FaWallet,
 } from 'react-icons/fa';
 import { GrUserAdmin } from 'react-icons/gr';
 import { Link, useLocation } from 'react-router-dom';
@@ -94,6 +96,18 @@ const Header = () => {
                         <FaChartPie />
                       </span>
                       <span>Mis ordenes</span>
+                    </Link>
+                    <Link to="/profile/orders">
+                      <span className="icon-user-menu">
+                        <FaShoppingBag />
+                      </span>
+                      <span>Compras</span>
+                    </Link>
+                    <Link to="/profile/orders">
+                      <span className="icon-user-menu">
+                        <FaWallet />
+                      </span>
+                      <span>Pagos</span>
                     </Link>
 
                     <Link to="/contact">

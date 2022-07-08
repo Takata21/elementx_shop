@@ -1,19 +1,49 @@
 import React from 'react';
-import './OrderItem.css';
-const OrderItem = () => {
+import { Link } from 'react-router-dom';
+import styles from './OrderItem.module.css';
+const OrderItem = ({ order }) => {
+  const date = new Date(order.createdAt);
+
   return (
-    <tr className="order-item">
-      <td>1234</td>
-      <td>jhon doe</td>
-      <td>jhondow@gmail.com</td>
-      <td>12.02.2021</td>
-      <td>$234.00</td>
-      <td>Cocle Penonome</td>
-      <td>
-        <span>completed</span>
-      </td>
-      {/* <td>completed</td> */}
-    </tr>
+    <article className={styles.item}>
+      <div className={styles.itemLeft}>
+        <div className={styles.orderCell}>
+          <span>pedido realizado</span>
+          <p>{date.toDateString()}</p>
+        </div>
+        <div className={styles.orderCell}>
+          <span>total</span>
+          <p>
+            $
+            {new Intl.NumberFormat('en-IN', {
+              maximumSignificantDigits: 2,
+            }).format(order.amount)}
+          </p>
+        </div>
+        <div className={styles.orderCell}>
+          <span>envie a</span>
+          <p>Cocle Penonome</p>
+        </div>
+      </div>
+      <div className={styles.orderNumberContainer}>
+        <div className={styles.orderNumber}>
+          <span>order #</span>
+          <p>{order._id.substring(0, 8)}...</p>
+        </div>
+        <div className={styles.itemRight}>
+          <Link to={`/profile/orders/${order._id}`}>detalles</Link>
+          <p
+            className={
+              order.orderStatus === 'pending' ? styles.pending : styles.complete
+            }
+          >
+            {order.orderStatus}
+          </p>
+          {/* <Link to="/">Factura</Link> */}
+          <Link to="/profile/orders/498y9389t3t934y8"></Link>
+        </div>
+      </div>
+    </article>
   );
 };
 

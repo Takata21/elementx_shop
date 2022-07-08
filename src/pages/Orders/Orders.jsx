@@ -3,8 +3,9 @@ import { FaArrowDown } from 'react-icons/fa';
 import OrderItem from '../../components/OrderItem/OrderItem';
 import ProfileMenu from '../../components/ProfileMenu/ProfileMenu';
 import './Orders.css';
-
+import { useOrders } from '../../context/provider/OrderContext';
 const Orders = () => {
+  const { orders } = useOrders();
   return (
     <div className="orders-container">
       <ProfileMenu />
@@ -12,7 +13,7 @@ const Orders = () => {
         <div className="orders-head">
           <div className="orders-left">
             <h3>Ordenes</h3>
-            <small>15 Odernes encontradas</small>
+            <small>{orders.length} Odernes encontradas</small>
           </div>
           <div className="orders-right"></div>
         </div>
@@ -53,33 +54,9 @@ const Orders = () => {
           </div>
         </div>
         <div className="orders_items-container">
-          <table>
-            <thead>
-              <tr>
-                <th>ID Orden</th>
-                <th>Usuario</th>
-                <th>Email</th>
-                <th>fecha</th>
-                <th>precio</th>
-                <th>dirección</th>
-                <th>estado</th>
-                {/* <th>acciones</th> */}
-              </tr>
-            </thead>
-            <tbody>
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-              <OrderItem />
-            </tbody>
-          </table>
+          {orders.map((order, index) => (
+            <OrderItem order={order} key={index} />
+          ))}
         </div>
         <div className="orders-pagination">
           <button>Anterior</button>

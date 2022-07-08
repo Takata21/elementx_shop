@@ -5,10 +5,17 @@
 }
 
 .profile-menu {
+    position: relative;
     background-color: white;
     width: 300px;
-    padding: 25px;
+    padding: 0px 25px;
     border-radius: 5px;
+    display: none;
+}
+
+.profile-menu nav {
+    position: sticky;
+    top: 120px;
 }
 
 .profile-menu-link {
@@ -36,6 +43,7 @@
 
 @media screen and (min-width: 720px) {
     .profile-menu {
+        display: block;
         font-size: 1.2rem;
     }
 }

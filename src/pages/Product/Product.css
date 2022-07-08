@@ -9,7 +9,7 @@
 .product-page-add_wishlist,
 .product-page-share {
     display: flex;
-    width: 65%;
+    width: 42%;
     align-items: center;
     gap: 5px;
     margin: 0;
@@ -84,6 +84,7 @@
 
 
 .product-page-img {
+    aspect-ratio: 1;
     width: 300px;
     height: 300px;
     object-fit: contain;

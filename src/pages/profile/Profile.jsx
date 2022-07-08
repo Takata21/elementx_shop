@@ -8,11 +8,12 @@ import {
   FaMapMarkerAlt,
 } from 'react-icons/fa';
 import { useAuth } from '../../context/provider/AuthContext';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ProfileMenu from '../../components/ProfileMenu/ProfileMenu';
 const Profile = () => {
   let navigate = useNavigate();
   const { user, isLoggedIn } = useAuth();
+
   if (isLoggedIn) {
     return (
       <div className="profile">
@@ -26,9 +27,9 @@ const Profile = () => {
               <div className="profile-details-img">
                 <img
                   src={
-                    user.image
-                      ? user.image
-                      : 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y'
+                    user.image === 'default'
+                      ? 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=retro&f=y'
+                      : user.image
                   }
                   alt={`Profile picture ${user?.name} ${user?.surname}`}
                 />
