@@ -6,7 +6,6 @@ import { TailSpin } from 'react-loader-spinner';
 import { toast } from 'react-hot-toast';
 import { getProduct } from '../../api/productsAPI';
 import Valoration from '../../components/Valoration/Valoration';
-import { useProducts } from '../../context/provider/ProductsContext';
 import { useCart } from '../../context/provider/CartContext';
 const Product = () => {
   const params = useParams();

@@ -29,7 +29,7 @@ const HomePage = () => {
           >
             <a className="btn position-absolute top-0 start-50 translate-middle-x pt-4 text-center text-light text-decoration-none text-shadow">
               <h1>Semana Gamer</h1>
-              <p>Ofertas en Videojuegos con hasta un 70% de descuentos.</p>
+              <p>Ofertas en Videojuegos con hasta un 70% de descuentos. </p>
             </a>
           </div>
         </div>

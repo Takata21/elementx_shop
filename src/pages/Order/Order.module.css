@@ -1,0 +1,210 @@
+.container {
+    background-color: #fdf8f8;
+    display: flex;
+    color: #1a243d;
+    padding: 15px;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+
+
+.DeliveryAddressItemTitle {
+    font-weight: 700;
+}
+
+.DeliveryAddressItemValue {
+    font-weight: 500;
+}
+
+.order {
+    min-height: calc(100vh - 95.5px);
+}
+
+.orderBody {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.orderNotFound {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.orderNotFound a {
+    color: blue;
+}
+
+.orderNumber {
+    font-size: 1rem;
+    color: rgb(0, 173, 181);
+}
+
+.orderSpinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.orderSummary,
+.DeliveryAddress {
+    padding: 25px;
+    background-color: #e4e9ef;
+
+}
+
+.orderSummaryContent {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.orderSummaryTitle {
+    margin-bottom: 15px;
+}
+
+.orderSummaryItem {
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderSummaryItemTitle {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.orderSummaryTotal {
+    padding: 10px 25px;
+    background-color: #e4e9ef;
+}
+
+.orderSummaryItemValue {}
+
+.orderTitle {
+    margin: 15px auto;
+    font-size: 1.2rem;
+}
+
+
+.customerDetails {
+    padding: 20px;
+    border: 1px solid #c1c5d0;
+
+}
+
+.customerDetail h2 {
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    border-bottom: #c1c5d0;
+
+}
+
+.customerDetail h4 {
+    font-size: 1.1rem;
+    text-transform: capitalize;
+}
+
+.customerDetailTitle {}
+
+.customerDetailContent {}
+
+.itemSummary {
+    padding: 20PX;
+    border-collapse: collapse;
+    border-spacing: 0;
+    max-width: 600px;
+    border: 1px solid #c1c5d0;
+}
+
+.itemSummary th {
+    text-align: center;
+    text-transform: capitalize;
+
+}
+
+.itemSummary tr {
+    border-bottom: 1px solid rgb(145, 143, 143);
+}
+
+.itemSummary th,
+.itemSummary td {
+    padding: 6px;
+}
+
+.rightPanel {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+
+    /* Force table to not be like tables anymore */
+    .itemSummary,
+    .itemSummary thead,
+
+    .itemSummary th,
+    .itemSummary td,
+    .itemSummary tr {
+        display: block;
+    }
+
+    .itemSummary tbody {
+        display: grid;
+        gap: 25px;
+        text-align: center;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .itemSummary thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .itemSummary td {
+        /* Behave  like a "row" */
+        display: flex;
+        justify-content: space-evenly;
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 35%;
+    }
+
+    .itemSummary td:last-child {
+        border-width: 0;
+    }
+
+    .itemSummary td:before {
+        content: attr(data-title);
+        color: rgb(94, 91, 91);
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+
+
+}
+
+
+@media screen and (min-width: 1024px) {
+    .itemSummary {
+        width: 600px;
+    }
+}

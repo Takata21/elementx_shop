@@ -21,7 +21,7 @@ import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
 import ConfirmationOrder from './components/ConfirmationOrder/ConfirmationOrder';
 import ContactPage from './pages/ContactPage/ContactPage';
 import EmailVerificationRequired from './pages/EmailVerificationRequired/EmailVerificationRequired';
-import OrderPage from './pages/OrderPage/orderPage';
+import Order from './pages/Order/Order';
 function App() {
   return (
     <BrowserRouter>
@@ -35,11 +35,7 @@ function App() {
                 <Route path="/cart" exact element={<Cart />} />
                 <Route path="/profile" exact element={<Profile />} />
                 <Route path="/profile/orders" exact element={<Orders />} />
-                <Route
-                  path="/profile/orders/:id"
-                  exact
-                  element={<OrderPage />}
-                />
+                <Route path="/profile/orders/:id" exact element={<Order />} />
                 <Route path="/profile/bills" exact element={<Bills />} />
                 <Route path="/profile/budget" exact element={<Budget />} />
                 <Route path="/profile/edit" exact element={<ProfileEdit />} />

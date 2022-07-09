@@ -49,14 +49,6 @@ export const OrderProvider = ({ children }) => {
     subsidiary,
     totalItems,
   }) => {
-    console.log(
-      '🚀 ~ file: OrderContext.jsx ~ line 52 ~ OrderProvider ~ subsidiary',
-      subsidiary
-    );
-    console.log(
-      '🚀 ~ file: OrderContext.jsx ~ line 52 ~ OrderProvider ~ province',
-      province
-    );
     dispatch({ type: ordersActions.LOAD_SAVE_ORDER });
     try {
       const res = await createOrder({
@@ -72,12 +64,12 @@ export const OrderProvider = ({ children }) => {
         subsidiary,
         totalItems,
       });
+
       if (res.data) {
         dispatch({
           type: ordersActions.LOAD_SAVE_ORDER_SUCCESS,
           payload: res.data,
         });
-        return res;
       }
     } catch (error) {
       dispatch({

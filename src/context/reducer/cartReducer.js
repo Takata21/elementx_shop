@@ -6,7 +6,6 @@ export const initialState = {
   items: [],
   totalItems: 0,
   totalPrice: 0,
-  direction: {},
 };
 
 export const initializer = (initialState = initialState) =>

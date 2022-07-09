@@ -10,8 +10,11 @@ import toast from 'react-hot-toast';
 import PaypalComponent from '../../components/PaypalButton/PaypalButton';
 import CartDirection from '../../components/CartDirection/CartDirection';
 const Cart = () => {
-  const [PaymentLink, setPaymentLink] = useState('');
-  const { cart_id, totalItems, items, totalPrice, direction } = useCart();
+  const [direction, setDirection] = useState({
+    province: '',
+    subsidiary: '',
+  });
+  const { cart_id, totalItems, items, totalPrice } = useCart();
   const { isLoggedIn } = useAuth();
   let navigate = useNavigate();
 
@@ -33,12 +36,6 @@ const Cart = () => {
   };
   return (
     <div className="cart-container">
-      {/* <OrderDetails
-        setCloseModal={setCloseModal}
-        closeModal={closeModal}
-        PaymentLink={PaymentLink}
-      /> */}
-
       <div className="cart-items">
         <div className="cart-items-head">
           <h2>Carro de compra</h2>
@@ -67,7 +64,9 @@ const Cart = () => {
       <div className="cart-direction-container">
         {
           // disabled because shipping is subject to unoExpress subsidiary
-          totalItems !== 0 && <CartDirection />
+          totalItems !== 0 && (
+            <CartDirection setDirection={setDirection} direction={direction} />
+          )
         }
         <div className="card-payment">
           <div className="card-payment-head">
@@ -113,7 +112,7 @@ const Cart = () => {
           </div>
 
           <div className="d-flex justify-content-end paypal-container">
-            <PaypalComponent test={'esto es una prueba'} />
+            <PaypalComponent direction={direction} />
           </div>
         </div>
       </div>

@@ -2,34 +2,34 @@ import React from 'react';
 import './EmailVerificationRequired.css';
 const EmailVerificationRequired = () => {
   return (
-    <section>
-      <div class="login-container">
-        <div class="Email_verification">
+    <section className="section">
+      <div ClassName="login-container">
+        <div ClassName="Email_verification">
           <h1>Email Verification</h1>
         </div>
-        <div class="Rectangle">
-          <div class="Group-4">
+        <div ClassName="Rectangle">
+          <div ClassName="Group-4">
             <img src="/assets/img/message.png" width="100%" />
           </div>
-          <div class="Thank-you-for-signin">
+          <div ClassName="Thank-you-for-signin">
             <p>Gracias por registrarte en una cuenta de Elementx</p>
             <d></d>
           </div>
-          <div class="Please-verify-your-e div">
+          <div ClassName="Please-verify-your-e div">
             <br />
             <p>
               Verifique su dirección de correo electrónico para acceder a su
               cuenta de Elementx.
             </p>
             Enviamos un correo electrónico a
-            <span class="current-email"> androidtkt10@gmail.com</span>
+            <span ClassName="current-email"> androidtkt10@gmail.com</span>
             <p>
               Para continuar, revise su bandeja de entrada y verifique su
               dirección de correo electrónico.
             </p>
-            {/* <div class="resent_email_message">
+            {/* <div ClassName="resent_email_message">
               <span>Didn’t receive the email?</span>
-              <a href="#" class="Resend-email">
+              <a href="#" ClassName="Resend-email">
                 Resend email
               </a>
             </div> */}

@@ -6,21 +6,27 @@ import { useCart } from '../../context/provider/CartContext';
 import { useOrders } from '../../context/provider/OrderContext';
 const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
-const PaypalComponent = () => {
-  let navigate = useNavigate();
-  const { clearCart, items, cart_id, direction, totalItems } = useCart();
-
+const PaypalComponent = ({ direction }) => {
+  console.log(direction.province);
+  const { clearCart, items, cart_id, totalItems } = useCart();
   const { addNewOrder } = useOrders();
+  let navigate = useNavigate();
 
   const handleOrder = async (action) => {
     const { subsidiary, province } = direction;
     let products = [];
-    products = items.map((item) => ({ id: item._id, quantity: item.quantity }));
+    products = items.map((item) => ({
+      id: item._id,
+      quantity: item.quantity,
+      images: item.images.url,
+      name: item.name,
+      price: item.price,
+    }));
     products = JSON.stringify(products);
 
     try {
       const { id, payer, purchase_units } = action;
-      const res = await addNewOrder({
+      await addNewOrder({
         paymentId: id,
         email: payer.email_address,
         name: payer.name.given_name + ' ' + payer.name.surname,
@@ -33,7 +39,6 @@ const PaypalComponent = () => {
         subsidiary: subsidiary,
         totalItems: totalItems,
       });
-      return res.data;
     } catch (error) {
       console.error(error);
     }
@@ -67,17 +72,10 @@ const PaypalComponent = () => {
   const onApprove = async (data, actions) => {
     const action = await actions.order.capture();
     if (action.status === 'COMPLETED') {
-      const res = await handleOrder(action);
-      console.log(
-        '🚀 ~ file: PaypalButton.jsx ~ line 70 ~ onApprove ~ res',
-        res
-      );
-
-      if (res._id) {
-        toast.success('Compra realizada con exito');
-        clearCart();
-        navigate('/');
-      }
+      await handleOrder(action);
+      toast.success('Orden realizada con exito');
+      clearCart();
+      navigate('/');
     }
   };
 

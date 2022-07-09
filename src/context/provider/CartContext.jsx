@@ -46,13 +46,6 @@ export const CartProvider = ({ children }) => {
     });
   };
 
-  const addDirection = (address) => {
-    dispatch({
-      type: CartActions.ADD_ADDRESS,
-      payload: address,
-    });
-  };
-
   return (
     <CartContext.Provider
       value={{
@@ -61,7 +54,6 @@ export const CartProvider = ({ children }) => {
         removeItem,
         clearCart,
         decrementItem,
-        addDirection,
       }}
     >
       {children}

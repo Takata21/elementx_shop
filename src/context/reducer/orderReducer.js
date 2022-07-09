@@ -26,22 +26,22 @@ export const orderReducer = (state, actions) => {
         isLoading: false,
         errorMessage: payload,
       };
-    case ordersActions.LOAD_SAVE_ORDERS:
+    case ordersActions.LOAD_SAVE_ORDER:
       return {
         ...state,
         isLoading: true,
       };
-    case ordersActions.LOAD_SAVE_ORDERS_SUCCESS:
+    case ordersActions.LOAD_SAVE_ORDER_SUCCESS:
       return {
         ...state,
         isLoading: false,
         orders: [...state.orders, payload],
       };
-    case ordersActions.LOAD_SAVE_ORDERS_ERROR:
+    case ordersActions.LOAD_SAVE_ORDER_ERROR:
       return {
         ...state,
         isLoading: false,
-        errorMessage: payload,
+        orders: [...state.orders, payload],
       };
     case ordersActions.ADD_ORDERS_TO_CART:
       return {

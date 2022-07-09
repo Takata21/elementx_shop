@@ -2,29 +2,20 @@ import React, { useState } from 'react';
 import { useCart } from '../../context/provider/CartContext';
 import { toast } from 'react-hot-toast';
 import { RiErrorWarningLine } from 'react-icons/ri';
-const CartDirection = () => {
-  const [direction, setDirection] = useState({
-    subsidiary: '',
-    province: 'Bocas del Toro',
-  });
-
-  // if(direction.subsidiary!==){
-
-  // }
-  const { addDirection } = useCart();
-
+const CartDirection = ({ direction, setDirection }) => {
   const handleDirection = () => {
     if (direction.subsidiary === '') {
       toast.error('Deber llenar todos los campos', {
         position: 'bottom-right',
       });
     } else {
-      addDirection(direction);
+      setDirection(direction);
       toast.success('Dirección Agregada correctamente', {
         position: 'bottom-right',
       });
     }
   };
+
   const handleChange = (e) => {
     setDirection({ ...direction, [e.target.name]: e.target.value });
   };
