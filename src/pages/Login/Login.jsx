@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { TailSpin } from 'react-loader-spinner';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/provider/AuthContext';
-
+import './Login.css';
 const Login = () => {
   let navigate = useNavigate();
   const [user, setUser] = useState({
@@ -55,10 +55,10 @@ const Login = () => {
         />
       </Link>
       <div className="register-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="login-form">
           <h4>Iniciar Sesion</h4>
 
-          <div className="form-control-container">
+          <div className="form-control-container login-form-control">
             <label htmlFor="email">correo electronico</label>
             <input
               onChange={handleChange}
@@ -68,7 +68,7 @@ const Login = () => {
               required
             />
           </div>
-          <div className="form-control-container">
+          <div className="form-control-container login-form-control">
             <label htmlFor="password">contraseña</label>
             <input
               onChange={handleChange}
@@ -80,7 +80,7 @@ const Login = () => {
           </div>
 
           <button
-            className="register-btn"
+            className="register-btn login-btn"
             type="submit"
             disabled={!user.email || !user.password || isLoading}
           >

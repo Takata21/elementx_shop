@@ -43,7 +43,7 @@ function App() {
                 <Route path="/login" exact element={<Login />} />
                 <Route path="/register" exact element={<Register />} />
                 <Route
-                  path="/register/email_verification_required"
+                  path="/register/email_verification_required/verify"
                   exact
                   element={<EmailVerificationRequired />}
                 />

@@ -58,6 +58,7 @@
 }
 
 .product-page-brand-img {
+    aspect-ratio: 1;
     width: 80px;
 }
 
@@ -75,6 +76,7 @@
 
 .product-page-delivery img {
     width: 100px;
+    aspect-ratio: auto;
 
 }
 
@@ -116,6 +118,7 @@
 
 .product-page-short-desc {
     color: #6c757d;
+    min-height: 90px;
 }
 
 
