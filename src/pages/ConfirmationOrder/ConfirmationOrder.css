@@ -1,12 +1,12 @@
 .confirmation_modal {
-    width: 95%;
+
     margin: auto 2.875rem;
     padding: 25px;
     background-color: white;
 }
 
 .confirmation_modal-btn {
-    display: inline-block;
+    display: block;
     margin: 10px auto;
     padding: 5px;
     border-radius: 5px;
@@ -25,10 +25,18 @@
 }
 
 .confirmation_details-container {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     min-height: 650px;
     background-color: #e1e1e1;
     text-align: center;
     transition: .5s visibility ease-in-out;
+    overscroll-behavior: none;
+    z-index: 1;
 }
 
 .confirmation_modal-gratitude {

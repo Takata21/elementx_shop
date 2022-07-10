@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Product.css';
-import { FaHeart, FaShareAlt, FaCartPlus } from 'react-icons/fa';
+import { FaHeart, FaShare, FaCartPlus } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { toast } from 'react-hot-toast';
@@ -49,17 +49,16 @@ const Product = () => {
   return (
     <div className="product-page-container">
       <div className="product-page-head">
-        <div className="product-page-important">
-          <span> -10%</span>
-          <span>nuevo</span>
+        <div className="actions-buttons-container">
+          <button className="share-btn" onClick={() => handleShare()}>
+            <FaShare size={25} />
+          </button>
+          <button className="favorites-btn" onClick={() => handleWish()}>
+            <FaHeart size={25} color="#f02f2f" />
+          </button>
         </div>
-        <img src={product.images?.url} alt="" className="product-page-img" />
-        <div className="product-img-brand-container ">
-          <img
-            src="/assets/img/ASUS_Logo.svg"
-            alt=""
-            className="product-page-brand-img"
-          />
+        <div className="product-image-container">
+          <img src={product.images?.url} alt="" className="product-page-img" />
         </div>
       </div>
       <div className="product-page-body">
@@ -82,17 +81,6 @@ const Product = () => {
           >
             <span>Agregar</span>
             <FaCartPlus />
-          </button>
-          <button className="product-page-share" onClick={() => handleShare()}>
-            <FaShareAlt />
-            <span>Compartir</span>
-          </button>
-          <button
-            className="product-page-add_wishlist"
-            onClick={() => handleWish()}
-          >
-            <FaHeart />
-            <span>Agregar al Favoritos</span>
           </button>
         </div>
       </div>

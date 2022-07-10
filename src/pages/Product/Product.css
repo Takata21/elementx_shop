@@ -5,11 +5,8 @@
     gap: 10px;
 }
 
-.product-page-add-to-cart,
-.product-page-add_wishlist,
-.product-page-share {
+.product-page-add-to-cart {
     display: flex;
-    width: 42%;
     align-items: center;
     gap: 5px;
     margin: 0;
@@ -22,7 +19,7 @@
     transition: .5s background ease-in-out;
 }
 
-.product-page-share {
+/* .product-page-share {
     background: rgb(0, 173, 181);
 }
 
@@ -37,18 +34,47 @@
 .product-page-add_wishlist:hover {
     background: #da2c0d;
 }
+*/
 
 .product-page-add-to-cart:hover {
     background-color: #ff7e3882;
 }
 
-.product-page-body {
-    padding: 25px;
-}
+
 
 .product-page-brand {
     font-weight: 600;
     color: rgb(0, 173, 181);
+}
+
+.actions-buttons-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    width: 50px;
+    gap: 10px;
+}
+
+.share-btn,
+.favorites-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .15);
+    cursor: pointer;
+}
+
+
+.share-btn:hover,
+.favorites-btn:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, .40);
 }
 
 .product-img-brand-container {
@@ -66,8 +92,10 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    max-width: 1024px;
-    min-height: 750px;
+    min-height: calc(100vh - 94px);
+    padding: 25px;
+    gap: 30px;
+
 }
 
 .product-page-delivery p {
@@ -123,10 +151,22 @@
 
 
 @media screen and (min-width: 720px) {
+    .actions-buttons-container {
+        flex-direction: column;
+        top: 20px;
+        left: 20px;
+
+    }
 
     .product-page-add-to-cart {
         padding: 15px;
         font-size: 1.2rem;
+    }
+
+    .product-page-body {
+        width: 100%;
+        max-width: 600px;
+        padding: 30px;
     }
 
     .product-page-container {
@@ -134,9 +174,19 @@
         justify-content: center;
         margin: auto;
         font-size: 1.2em;
+        gap: 25px;
     }
 
-    .product-page-head {}
+    .product-page-head {
+        display: flex;
+        width: 58.33333%;
+        align-items: center;
+        min-height: 508px;
+        justify-content: center;
+        border: 1px solid #ebebeb;
+
+    }
+
 
     .product-page-img {
         width: 500px;

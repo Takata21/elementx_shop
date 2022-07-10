@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Footer from './components/footer/Footer';
 import Header from './components/header/Header';
 import Cart from './pages/Cart/Cart';
@@ -18,7 +18,7 @@ import Orders from './pages/Orders/Orders';
 import Budget from './pages/Budget/Budget';
 import Bills from './pages/Bills/Bills';
 import ProfileEdit from './pages/ProfileEdit/ProfileEdit';
-import ConfirmationOrder from './components/ConfirmationOrder/ConfirmationOrder';
+import ConfirmationOrder from './pages/ConfirmationOrder/ConfirmationOrder';
 import ContactPage from './pages/ContactPage/ContactPage';
 import EmailVerificationRequired from './pages/EmailVerificationRequired/EmailVerificationRequired';
 import Order from './pages/Order/Order';
@@ -34,6 +34,11 @@ function App() {
                 <Route path="/" exact element={<HomePage />} />
                 <Route path="/cart" exact element={<Cart />} />
                 <Route path="/profile" exact element={<Profile />} />
+                <Route
+                  path="/profile/confirm-order/:id"
+                  exact
+                  element={<ConfirmationOrder />}
+                />
                 <Route path="/profile/orders" exact element={<Orders />} />
                 <Route path="/profile/orders/:id" exact element={<Order />} />
                 <Route path="/profile/bills" exact element={<Bills />} />
@@ -42,6 +47,7 @@ function App() {
                 <Route path="/product/:id" exact element={<Product />} />
                 <Route path="/login" exact element={<Login />} />
                 <Route path="/register" exact element={<Register />} />
+
                 <Route
                   path="/register/email_verification_required/verify"
                   exact
