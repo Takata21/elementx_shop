@@ -24,7 +24,12 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
   let location = useLocation();
   const { isLoggedIn, user, logout } = useAuth();
-  const { totalItems } = useCart();
+  const { totalItems, clearCart } = useCart();
+
+  const handleLogout = () => {
+    logout();
+    clearCart();
+  };
   if (location.pathname !== '/login' && location.pathname !== '/register') {
     return (
       <header className="header">
@@ -125,7 +130,7 @@ const Header = () => {
                         <span>Admin Panel</span>
                       </Link>
                     )}
-                    <Link to="/" onClick={() => logout()}>
+                    <Link to="/" onClick={handleLogout}>
                       <span className="icon-user-menu">
                         <FaSignOutAlt />
                       </span>

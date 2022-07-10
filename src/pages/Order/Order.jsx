@@ -14,7 +14,6 @@ const Order = () => {
     const loadOrder = async () => {
       const oder = await getOrder(params.id);
       setOrder(oder.data);
-      console.log(order);
     };
     loadOrder();
     setLoading(false);

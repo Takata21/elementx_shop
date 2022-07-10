@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await register({ name, surname, email, password, birthday });
       const { token } = res.data;
-      console.log(res.data);
       localStorage.setItem('etx_token', token);
 
       if (token) {

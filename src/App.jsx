@@ -22,6 +22,7 @@ import ConfirmationOrder from './pages/ConfirmationOrder/ConfirmationOrder';
 import ContactPage from './pages/ContactPage/ContactPage';
 import EmailVerificationRequired from './pages/EmailVerificationRequired/EmailVerificationRequired';
 import Order from './pages/Order/Order';
+import VerifyUser from './pages/VerifyUser/VerifyUser';
 function App() {
   return (
     <BrowserRouter>
@@ -47,9 +48,10 @@ function App() {
                 <Route path="/product/:id" exact element={<Product />} />
                 <Route path="/login" exact element={<Login />} />
                 <Route path="/register" exact element={<Register />} />
+                <Route path="/auth/verify" exact element={<VerifyUser />} />
 
                 <Route
-                  path="/register/email_verification_required/verify"
+                  path="/register/email_verification_required/verify/:id"
                   exact
                   element={<EmailVerificationRequired />}
                 />

@@ -1,0 +1,14 @@
+.alertContainer {
+    position: relative;
+    margin: 0 20px;
+    border: 1px solid #c40000;
+    box-shadow: 0 0 0 4px #fcf4f4 inset;
+    padding-left: 63px;
+    background: #fff;
+}
+
+.iconAlert {
+    position: absolute;
+    left: 18px;
+    top: 11px;
+}

@@ -1,15 +1,10 @@
 import React from 'react';
 import './EmailVerificationRequired.css';
 import { TailSpin } from 'react-loader-spinner';
+import { useParams } from 'react-router-dom';
 const EmailVerificationRequired = () => {
-  const params = new Proxy(new URLSearchParams(window.location.search), {
-    get: (searchParams, prop) => searchParams.get(prop),
-  });
-
-  function decodeURLComponent(str) {
-    return window.atob(str);
-  }
-  let email = decodeURLComponent(params.user);
+  let params = useParams();
+  const email = params.id;
   if (!email) {
     return (
       <div className="loader">
@@ -36,8 +31,8 @@ const EmailVerificationRequired = () => {
               Verifique su dirección de correo electrónico para acceder a su
               cuenta de Elementx.
             </p>
-            Enviamos un correo electrónico a
-            <span className="current-email">{email}</span>
+            Enviamos un correo electrónico a:
+            <span className="current-email"> {email}</span>
             <p>
               Para continuar, revise su bandeja de entrada y verifique su
               dirección de correo electrónico.

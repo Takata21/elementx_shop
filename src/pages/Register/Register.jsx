@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { TailSpin } from 'react-loader-spinner';
 import { Link, useNavigate } from 'react-router-dom';
+import ErrorMessageBox from '../../components/ErrorMessageBox/ErrorMessageBox';
 import { useAuth } from '../../context/provider/AuthContext';
 import './Register.css';
 const Register = () => {
@@ -84,7 +85,7 @@ const Register = () => {
     try {
       const userResponse = await signup(user);
       if (userResponse) {
-        navigate('/register/email_verification_required');
+        navigate(`/register/email_verification_required/verify/${user.email}`);
         toast.success('Registrado correctamente', {
           position: 'top-center',
         });
@@ -124,6 +125,8 @@ const Register = () => {
           className="register-letter-logo"
         />
       </Link>
+
+      {errorMessage && <ErrorMessageBox message={errorMessage} />}
       <div className="register-container">
         <form onSubmit={handleSubmit}>
           <h4>Crear cuenta</h4>
