@@ -44,9 +44,7 @@ const LateralMenu = ({ openMenu, setOpenMenu }) => {
                 <li>
                   <Link to="/">Más Vendidos</Link>
                 </li>
-                <li>
-                  <Link to="/">Nuevos</Link>
-                </li>
+                <li></li>
                 <li>
                   <Link to="/">Populares</Link>
                 </li>
@@ -60,9 +58,7 @@ const LateralMenu = ({ openMenu, setOpenMenu }) => {
                 <li>
                   <Link to="/">Computación</Link>
                 </li>
-                <li>
-                  <Link to="/">Promocionales</Link>
-                </li>
+                <li></li>
                 <li>
                   <Link to="/">Electrónica</Link>
                 </li>
