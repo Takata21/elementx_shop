@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Product.css';
+import { ONLINE_HOST } from '../../config';
 import { FaHeart, FaShare, FaCartPlus } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
@@ -25,7 +26,7 @@ const Product = () => {
     if (navigator.share) {
       navigator.share({
         title: product.name,
-        url: 'http://localhost:3000/product/62a7fbd89b27c632b6bc26d6',
+        url: `${ONLINE_HOST}/product/62a7fbd89b27c632b6bc26d6`,
       });
     }
   };

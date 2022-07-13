@@ -1,0 +1,74 @@
+.nav_main {
+    background-color: rgba(34, 40, 49, 1);
+    color: white;
+}
+
+.navbar {
+    position: relative;
+    font-size: 12px;
+    min-width: 200px;
+
+}
+
+.nav_logobar {
+    display: flex;
+    align-items: center;
+    height: 48px;
+    width: 100%;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    color: white;
+    border-bottom: 1px solid #232f3e;
+}
+
+.nav_left {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    flex-flow: row nowrap;
+}
+
+.nav_hamburger_menu {
+    padding: 14px 14px;
+}
+
+.nav_logo {
+    position: relative;
+
+}
+
+.nav_logo_base {
+    padding: 10px 40px 0 20px;
+}
+
+.nav_right {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.nav_cart {}
+
+.nav_user {
+    padding-right: 18px;
+}
+
+.nav_searchbar_wrapper {}
+
+.nav_searchbar {}
+
+.nav_fill {}
+
+.nav_search_field {}
+
+.nav_input {}
+
+.nav_searchbar .nav_right {}
+
+.nav_search_submit {}
+
+.nav_searchbar .nav_input {}
+
+.nav_search_icon {}

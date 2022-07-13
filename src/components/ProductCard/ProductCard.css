@@ -50,21 +50,34 @@
 .product-card-head {
     display: flex;
     align-items: center;
-    background-color: rgba(211, 211, 211, .3);
+    /* background-color: rgba(211, 211, 211, .3); */
     margin-right: 5px;
 }
 
 .product-card-head img {}
 
 .product-card-img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
+    width: 129px;
+    height: 130px;
+    object-fit: cover;
 }
 
 .product-card-price {
     font-weight: 700;
     margin: 0;
+}
+
+.product-stock {
+    margin: 5px 0;
+}
+
+.product-stock-message.few {
+    color: #B12704;
+}
+
+.product-stock-message.many {
+    color: green;
+
 }
 
 .product-title {

@@ -18,24 +18,24 @@ const ProductCard = ({ product }) => {
           <div className="product-card-info">
             <h5 className="product-title">{product.name}</h5>
             <p className="product-card-desc">
-              {`${product.description.substring(0, 100)}...`}
+              {`${product.description.substring(0, 40)}...`}
             </p>
-            {/* <p className="product-card-desc">
-          {readMore ? info : `${info.substring(0, 200)}...`}
-          <button onClick={() => setReadMore(!readMore)}>
-            {readMore ? 'show less' : '  read more'}
-          </button>
-        </p> */}
+
+            <div className="product-stock">
+              <span
+                className={
+                  product?.stock > 5
+                    ? 'product-stock-message many'
+                    : 'product-stock-message few'
+                }
+              >
+                Queda(n) {product.stock} producto(s) en stock
+              </span>
+            </div>
 
             <Valoration number={product.rating} />
             <div className="product-card-footer">
-              <p className="product-card-price">
-                $ {new Intl.NumberFormat().format(product.price)}
-              </p>
-              {/* <button>
-                <BsCart4 />
-                Agregar al carrito
-              </button> */}
+              <p className="product-card-price">$ {product?.price}</p>
             </div>
           </div>
         </div>

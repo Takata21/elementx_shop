@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { TailSpin } from 'react-loader-spinner';
 import './Cart.css';
 import { FaCcMastercard, FaCcVisa, FaCcPaypal } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CartCard from '../../components/CartCards/CartCard';
 import { useCart } from '../../context/provider/CartContext';
 import { useAuth } from '../../context/provider/AuthContext';
 import toast from 'react-hot-toast';
 import PaypalComponent from '../../components/PaypalButton/PaypalButton';
-import CartDirection from '../../components/CartDirection/CartDirection';
+import DirectionForm from '../../components/DirectionForm/DirectionForm';
 const Cart = () => {
   const [direction, setDirection] = useState({
     province: '',
@@ -43,15 +42,16 @@ const Cart = () => {
         </div>
         <hr />
         {items.length <= 0 ? (
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              minHeight: '450px',
-            }}
-          >
+          <div className="cart-no-items">
+            <img
+              src="/assets/img/empty_cart.gif"
+              alt="cart empty image"
+              className="empty_cart_gif"
+            />
             <h2>No hay elementos seleccionados</h2>
+            <Link to="/" className="cart-btn">
+              Seguir Comprando
+            </Link>
           </div>
         ) : (
           <div className="cart-items-container">
@@ -61,13 +61,10 @@ const Cart = () => {
           </div>
         )}
       </div>
-      <div className="cart-direction-container">
-        {
-          // disabled because shipping is subject to unoExpress subsidiary
-          totalItems !== 0 && (
-            <CartDirection setDirection={setDirection} direction={direction} />
-          )
-        }
+      <div className="cart-delivery-container">
+        {totalItems !== 0 && (
+          <DirectionForm setDirection={setDirection} direction={direction} />
+        )}
         <div className="card-payment">
           <div className="card-payment-head">
             <h5 className="">Detalles de compra</h5>
@@ -110,10 +107,15 @@ const Cart = () => {
               $ {new Intl.NumberFormat().format(totalPrice + 20)}
             </p>
           </div>
-
-          <div className="d-flex justify-content-end paypal-container">
-            <PaypalComponent direction={direction} />
-          </div>
+          {totalItems <= 0 ? (
+            <Link to="/" className="cart-btn">
+              Seguir Comprando
+            </Link>
+          ) : (
+            <div className="d-flex justify-content-end paypal-container">
+              <PaypalComponent direction={direction} />
+            </div>
+          )}
         </div>
       </div>
     </div>

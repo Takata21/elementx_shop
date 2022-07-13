@@ -23,18 +23,23 @@ import ContactPage from './pages/ContactPage/ContactPage';
 import EmailVerificationRequired from './pages/EmailVerificationRequired/EmailVerificationRequired';
 import Order from './pages/Order/Order';
 import VerifyUser from './pages/VerifyUser/VerifyUser';
+
+import HeaderV2 from './components/header/HeaderV2';
+import Address from './components/Address/Address';
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
           <Header />
+          {/* <HeaderV2 /> */}
           <ProductProvider>
             <OrderProvider>
               <Routes>
                 <Route path="/" exact element={<HomePage />} />
                 <Route path="/cart" exact element={<Cart />} />
                 <Route path="/profile" exact element={<Profile />} />
+                <Route path="/profile/address" exact element={<Address />} />
                 <Route
                   path="/profile/confirm-order/:id"
                   exact

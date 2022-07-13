@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './Header.css';
 import {
   FaBars,
@@ -15,7 +15,7 @@ import {
 } from 'react-icons/fa';
 import { GrUserAdmin } from 'react-icons/gr';
 import { Link, useLocation } from 'react-router-dom';
-
+import Search from '../search/Search';
 import LateralMenu from '../LateralMenu/LateralMenu';
 import { useAuth } from '../../context/provider/AuthContext';
 import { useCart } from '../../context/provider/CartContext';
@@ -56,6 +56,7 @@ const Header = () => {
           </Link>
         </div>
         <LateralMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
+        {/* <Search /> */}
         <div className="header-right">
           <div className="header-search-container">
             <FaSearch size="25" color="white" />
