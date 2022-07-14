@@ -1,16 +1,23 @@
 import React from 'react';
 import styles from './HeaderV2.module.css';
-import { FaBars, FaSearch, FaShoppingCart, FaRegUser } from 'react-icons/fa';
+import { FaBars, FaShoppingCart, FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import Search from '../search/Search';
+import LateralMenu from '../LateralMenu/LateralMenu';
+import { useMenu } from '../../hooks/useMenu';
+import { useAuth } from '../../context/provider/AuthContext';
+import UserMenu from '../UserMenu/UserMenu';
 const HeaderV2 = () => {
+  const { isLoggedIn, user } = useAuth();
+  const hamburgerMenu = useMenu();
+  const userMenu = useMenu();
   return (
     <header className={styles.nav_main}>
       <div className={styles.navbar}>
         <div className={styles.nav_logobar}>
           <div className={styles.nav_left}>
             <div className={styles.nav_hamburger_menu}>
-              <a>
+              <a onClick={hamburgerMenu.handleShow}>
                 <FaBars
                   size="25"
                   color="white"
@@ -29,35 +36,40 @@ const HeaderV2 = () => {
               </Link>
             </div>
           </div>
+          <LateralMenu
+            show={hamburgerMenu.show}
+            handleShow={hamburgerMenu.handleShow}
+          />
           <div className={styles.nav_right}>
-            <Link to="/login" className={styles.nav_user}>
-              <FaRegUser size={'32px'} color="#fff" />
-            </Link>
+            <div className={styles.nav_user}>
+              {isLoggedIn ? (
+                <>
+                  <span className={styles.nav_user_greeting}>
+                    Hola,{user?.name}
+                  </span>
+                  <a
+                    className={styles.nav_user_link}
+                    onClick={userMenu.handleShow}
+                  >
+                    <FaRegUser size={'32px'} color="#fff" />
+                  </a>
+                </>
+              ) : (
+                <>
+                  <span className={styles.nav_user_greeting}>Hola</span>
+                  <Link to="/login" className={styles.nav_user_link}>
+                    <FaRegUser size={'32px'} color="#fff" />
+                  </Link>
+                </>
+              )}
+            </div>
             <Link to="/cart" className={styles.nav_cart}>
               <FaShoppingCart size={'32px'} color="#fff" />
             </Link>
+            <UserMenu show={userMenu.show} handleShow={userMenu.handleShow} />
           </div>
         </div>
-        <div className={styles.nav_searchbar_wrapper}>
-          <form className={styles.nav_searchbar}>
-            <div className={styles.nav_fill}>
-              <div className={styles.nav_search_field}>
-                <input
-                  type="text"
-                  className={styles.nav_input}
-                  placeholder="Buscar Elementx"
-                />
-              </div>
-            </div>
-            <div className={(styles.nav_searchbar, styles.nav_right)}>
-              <div className={styles.nav_search_submit}>
-                <button type="submit" className={styles.nav_input}>
-                  <FaSearch color="#000" className={styles.nav_search_icon} />
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
+        <Search />
       </div>
     </header>
   );

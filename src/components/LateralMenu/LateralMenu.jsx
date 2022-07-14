@@ -1,4 +1,5 @@
 import React from 'react';
+import './LateralMenu.css';
 import { Link } from 'react-router-dom';
 import {
   FaTimes,
@@ -10,11 +11,11 @@ import {
   FaYoutube,
   FaTwitch,
 } from 'react-icons/fa';
-import './LateralMenu.css';
-const LateralMenu = ({ openMenu, setOpenMenu }) => {
+
+const LateralMenu = ({ show, handleShow }) => {
   return (
     <>
-      <aside className={openMenu ? `aside active` : `aside`}>
+      <aside className={show ? `aside active` : `aside`}>
         <div className="lateral-menu-container">
           <div className="lateral-menu-head">
             <Link to="/">
@@ -27,7 +28,7 @@ const LateralMenu = ({ openMenu, setOpenMenu }) => {
 
             <button
               className="lateral-menu-head-btn-close"
-              onClick={() => setOpenMenu(!openMenu)}
+              onClick={handleShow}
             >
               <FaTimes size="30" color="white" />
             </button>
@@ -44,7 +45,9 @@ const LateralMenu = ({ openMenu, setOpenMenu }) => {
                 <li>
                   <Link to="/">Más Vendidos</Link>
                 </li>
-                <li></li>
+                <li>
+                  <Link to="/">Nuevos</Link>
+                </li>
                 <li>
                   <Link to="/">Populares</Link>
                 </li>
@@ -58,7 +61,9 @@ const LateralMenu = ({ openMenu, setOpenMenu }) => {
                 <li>
                   <Link to="/">Computación</Link>
                 </li>
-                <li></li>
+                <li>
+                  <Link to="/">Promocionales</Link>
+                </li>
                 <li>
                   <Link to="/">Electrónica</Link>
                 </li>

@@ -1,0 +1,106 @@
+.userMenu_container {
+    position: fixed;
+    display: flex;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: flex-end;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(34, 40, 49, .3);
+    z-index: 5;
+    transform: translateX(2000px);
+    transition: .5s ease-in-out transform;
+
+}
+
+.userMenu_container.active {
+    transform: translate(0);
+}
+
+.userMenu {
+    background: white;
+    width: 80%;
+}
+
+.useMenu_head {
+    display: flex;
+    gap: 15px;
+    padding: 10px 15px;
+    align-items: center;
+    height: 128px;
+
+    background: #191d24;
+}
+
+.userMenu_avatar {
+    display: block;
+    border-radius: 50%;
+}
+
+.userMenu_greeting {}
+
+.userMenu_greeting p {
+    font-weight: 600;
+}
+
+.userMenu_greeting p {
+    margin: 0;
+    font-size: 1.2rem;
+    text-transform: capitalize;
+}
+
+.userMenu_btnClose {
+    align-self: flex-start;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: rgba(255, 255, 255, .7);
+    font-size: 1.8rem;
+}
+
+.userMenu_body {
+    padding: 20px 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background: rgba(34, 40, 49, 1);
+}
+
+.userMenu_myAccount {}
+
+.userMenu_config {}
+
+.userMenu_subtitle {
+    font-weight: 700;
+    color: white;
+    margin: 10px 0 20px 0;
+}
+
+.userMenu_options {
+    font-size: 1.2rem;
+    display: grid;
+    gap: 20px;
+}
+
+.userMenu_option {
+    display: flex;
+    width: 200px;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    color: white;
+    transition: .5s ease-in-out color;
+}
+
+.userMenu_option:hover {
+    color: rgb(0, 171, 181);
+}
+
+@media screen and (min-width:1024px) {
+    .userMenu {
+        width: 25%;
+    }
+}

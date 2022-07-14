@@ -6,7 +6,6 @@
 .navbar {
     position: relative;
     font-size: 12px;
-    min-width: 200px;
 
 }
 
@@ -29,7 +28,11 @@
 }
 
 .nav_hamburger_menu {
-    padding: 14px 14px;
+    padding: 10px 10px;
+}
+
+.nav_hamburger_menu>a {
+    cursor: pointer;
 }
 
 .nav_logo {
@@ -42,33 +45,38 @@
 }
 
 .nav_right {
+    position: relative;
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
     gap: 15px;
     justify-content: space-between;
 }
 
-.nav_cart {}
-
-.nav_user {
+.nav_cart {
     padding-right: 18px;
+
 }
 
-.nav_searchbar_wrapper {}
+.nav_user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-.nav_searchbar {}
+.nav_user_greeting {
+    font-weight: 700;
+}
 
-.nav_fill {}
+.nav_user_link {
+    cursor: pointer;
+}
 
-.nav_search_field {}
+@media screen and (min-width: 1024px) {
+    .nav_main {
+        padding: 5px;
+    }
 
-.nav_input {}
-
-.nav_searchbar .nav_right {}
-
-.nav_search_submit {}
-
-.nav_searchbar .nav_input {}
-
-.nav_search_icon {}
+    .nav_right {
+        gap: 30px;
+    }
+}

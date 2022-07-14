@@ -1,17 +1,25 @@
+/*----------------LIBRARIES-----------------*/
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
-import Cart from './pages/Cart/Cart';
-import HomePage from './pages/HomePage';
-import Product from './pages/Product/Product';
+import { Toaster } from 'react-hot-toast';
+
+/*----------------PROVIDERS-----------------*/
 import { ProductProvider } from './context/provider/ProductsContext';
 import { AuthProvider } from './context/provider/AuthContext';
 import { CartProvider } from './context/provider/CartContext';
 import { OrderProvider } from './context/provider/OrderContext';
+
+/*----------------COMPONENTS-----------------*/
+import Copyright from './components/Copyright/Copyright';
+import Footer from './components/footer/Footer';
+import HeaderV2 from './components/header/HeaderV2';
+import Address from './components/Address/Address';
+
+/*----------------PAGES-----------------*/
+import Cart from './pages/Cart/Cart';
+import HomePage from './pages/HomePage';
+import Product from './pages/Product/Product';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
-import Copyright from './components/Copyright/Copyright';
-import { Toaster } from 'react-hot-toast';
 import Profile from './pages/profile/Profile';
 import AdminPage from './pages/AdminPage/AdminPage';
 import Orders from './pages/Orders/Orders';
@@ -24,15 +32,12 @@ import EmailVerificationRequired from './pages/EmailVerificationRequired/EmailVe
 import Order from './pages/Order/Order';
 import VerifyUser from './pages/VerifyUser/VerifyUser';
 
-import HeaderV2 from './components/header/HeaderV2';
-import Address from './components/Address/Address';
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
-          <Header />
-          {/* <HeaderV2 /> */}
+          <HeaderV2 />
           <ProductProvider>
             <OrderProvider>
               <Routes>
