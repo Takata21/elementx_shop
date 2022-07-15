@@ -6,14 +6,12 @@ import { useCart } from '../../context/provider/CartContext';
 import { useOrders } from '../../context/provider/OrderContext';
 const PayPalButton = window.paypal.Buttons.driver('react', { React, ReactDOM });
 
-const PaypalComponent = ({ direction }) => {
-  console.log(direction.province);
+const PaypalComponent = () => {
   const { clearCart, items, cart_id, totalItems } = useCart();
   const { addNewOrder } = useOrders();
   let navigate = useNavigate();
-
+  const address = localStorage.getItem('etx_direction');
   const handleOrder = async (action) => {
-    const { subsidiary, province } = direction;
     let products = [];
     products = items.map((item) => ({
       id: item._id,
@@ -35,8 +33,6 @@ const PaypalComponent = ({ direction }) => {
         currency: purchase_units[0].amount.currency_code,
         cart_id: cart_id,
         products: products,
-        province: province,
-        subsidiary: subsidiary,
         totalItems: totalItems,
       });
     } catch (error) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { API_URL_ONLINE } from '../../config';
 import './ContactPage.css';
 import {
   FaMapMarkerAlt,
@@ -7,7 +8,31 @@ import {
   FaGlobeAmericas,
   FaWhatsapp,
 } from 'react-icons/fa';
+import { useState } from 'react';
 const ContactPage = () => {
+  const [message, setMessage] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  function handleChange(e) {
+    setMessage({ ...message, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const response = await fetch(`${API_URL_ONLINE}/contact/create-ticket`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message),
+    });
+    const data = await response.json();
+    console.log(data);
+  }
   return (
     <section className="contact">
       <h2>Contáctenos</h2>
@@ -72,7 +97,7 @@ const ContactPage = () => {
               width="150px"
             />
           </div>
-          <form className="contact-form">
+          <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Nombre Completo</label>
               <input
@@ -80,7 +105,8 @@ const ContactPage = () => {
                 name="name"
                 id="name"
                 required
-                placeholder="Nombre Completo"
+                autoFocus
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
@@ -90,16 +116,16 @@ const ContactPage = () => {
                 name="email"
                 id="email"
                 required
-                placeholder="Email"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
-              <label htmlFor="subjet">Asunto</label>
+              <label htmlFor="subject">Asunto</label>
               <input
                 type="text"
-                name="subjet"
-                id="subjet"
-                placeholder="Asunto"
+                name="subject"
+                id="subject"
+                onChange={handleChange}
               />
             </div>
             <div className="form-group">
@@ -108,7 +134,8 @@ const ContactPage = () => {
                 type="text"
                 name="message"
                 id="message"
-                placeholder="Mensaje"
+                required
+                onChange={handleChange}
               />
             </div>
             <button className="contact-btn" type="submit">

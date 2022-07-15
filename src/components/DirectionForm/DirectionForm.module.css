@@ -26,6 +26,10 @@
     border-bottom: 1px solid #63656860;
 }
 
+.form_input {
+    height: 35px;
+}
+
 .btn_container {
     display: grid;
     width: 100%;

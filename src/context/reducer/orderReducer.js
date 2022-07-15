@@ -4,6 +4,7 @@ export const initialState = {
   isLoading: false,
   orders: [],
   errorMessages: '',
+  addressId: '',
 };
 
 export const orderReducer = (state, actions) => {

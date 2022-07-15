@@ -13,26 +13,11 @@ const Cart = () => {
     province: '',
     subsidiary: '',
   });
-  const { cart_id, totalItems, items, totalPrice } = useCart();
+  const { totalItems, items, totalPrice } = useCart();
   const { isLoggedIn } = useAuth();
   let navigate = useNavigate();
+  const delivery = 7.0;
 
-  const handlePay = () => {
-    if (!isLoggedIn) {
-      toast.error(' Necesita iniciar sesión');
-      navigate('/login');
-      return;
-    }
-    if (totalItems === 0) {
-      toast.error('Debe tener items en el carro para realizar una compra');
-      return;
-    }
-
-    if (Object.keys(direction).length === 0 || direction.subsidiary === '') {
-      toast.error('Debe agregar una direccion de envio');
-      return;
-    }
-  };
   return (
     <div className="cart-container">
       <div className="cart-items">
@@ -62,9 +47,7 @@ const Cart = () => {
         )}
       </div>
       <div className="cart-delivery-container">
-        {totalItems !== 0 && (
-          <DirectionForm setDirection={setDirection} direction={direction} />
-        )}
+        {totalItems !== 0 && <DirectionForm />}
         <div className="card-payment">
           <div className="card-payment-head">
             <h5 className="">Detalles de compra</h5>
@@ -93,27 +76,39 @@ const Cart = () => {
 
           <div className="card-payment-subtotal">
             <p className="">Subtotal</p>
-            <p className="">$ {new Intl.NumberFormat().format(totalPrice)}</p>
+            <p className="">
+              ${' '}
+              {totalItems <= 0
+                ? '0.00'
+                : new Intl.NumberFormat('en-US', {
+                    maximumSignificantDigits: 4,
+                  }).format(totalPrice)}
+            </p>
           </div>
 
           <div className="card-payment-shipping">
             <p className="">Shipping</p>
-            <p className="">$20.00</p>
+            <p className="">{totalItems <= 0 ? '$ 0.00' : '$ 7.00'}</p>
           </div>
 
           <div className="card-payment-total">
             <p className="">Total(Incl. taxes)</p>
             <p className="">
-              $ {new Intl.NumberFormat().format(totalPrice + 20)}
+              ${' '}
+              {totalItems <= 0
+                ? '0.00'
+                : new Intl.NumberFormat('en-US', {
+                    maximumSignificantDigits: 4,
+                  }).format(totalPrice + delivery)}
             </p>
           </div>
-          {totalItems <= 0 ? (
+          {totalItems <= 0 || !isLoggedIn ? (
             <Link to="/" className="cart-btn">
               Seguir Comprando
             </Link>
           ) : (
             <div className="d-flex justify-content-end paypal-container">
-              <PaypalComponent direction={direction} />
+              <PaypalComponent />
             </div>
           )}
         </div>

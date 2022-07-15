@@ -30,7 +30,7 @@ const HeaderV2 = () => {
                 <img
                   src="/assets/img/ElementxOnline.svg"
                   alt=""
-                  width={'150px'}
+                  width={'100px'}
                   className={styles.nav_logo_bas}
                 />
               </Link>

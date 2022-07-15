@@ -1,5 +1,5 @@
 .nav_searchbar_wrapper {
-    padding: 10px;
+    padding: 0 10px;
     max-width: 645px;
     margin: auto;
 }
@@ -9,7 +9,7 @@
 }
 
 .form_control {
-    height: 40px;
+    height: 44px;
     border-radius: 8px;
     overflow: hidden;
 }
@@ -31,7 +31,7 @@
     position: absolute;
     top: 0;
     right: 0px;
-    height: 40px;
+    height: 100%;
     width: 40px;
     outline: none;
     border: none;

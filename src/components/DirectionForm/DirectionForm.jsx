@@ -1,88 +1,64 @@
 import React, { useState, useEffect } from 'react';
-import { toast } from 'react-hot-toast';
-import { RiErrorWarningLine } from 'react-icons/ri';
-import WarningMessage from '../WarningMessage/WarningMessage';
 import styles from './DirectionForm.module.css';
+import { toast } from 'react-hot-toast';
+import WarningMessage from '../WarningMessage/WarningMessage';
+import { useOptions } from '../../hooks/useOptions';
+import addDirection from '../../services/addDirection';
+
 const DirectionForm = () => {
-  const unoExpress = [
-    {
-      branchs: [
-        'Vía Brasil',
-        'Obarrio',
-        'San Francisco',
-        'Vista Hermosa',
-        'Río Abajo',
-        'Juan Díaz',
-        'Los Andes',
-        'Tumba Muerto',
-        '24 de Diciembre',
-        'La Chorrera',
-        'Vista Alegra',
-        'Colón',
-        'Albrook',
-        'Costa del Este',
-        'Villa Lucre',
-        'Justo Arosemena',
-        'Marbella',
-        'El Dorado',
-        'Brisas del Golf',
-        'Pricemart El Dorado',
-        'Paseo Arraijan',
-        'Villa Zaita',
-        '12 de Octubre',
-        'Las Acacias',
-      ],
-    },
+  const { branchs, handleProvince, province } = useOptions();
+  const [direction, setDirection] = useState({
+    phone: 0,
+    note: '',
+    province: '',
+    branch: '',
+  });
 
-    {
-      branchs: [
-        'David',
-        'Boquete',
-        'Volcán',
-        'Bugaba',
-        'Pto. Armuelles',
-        'Frontera',
-        'Changuinola',
-        'Almirante',
-        'Isla Colón',
-      ],
-    },
-    {
-      branchs: [
-        ' Santiago',
-        'Aguadulce',
-        'Penonomé',
-        'Chitré',
-        'Las Tablas',
-        'Gorgona',
-        'El Valle de Antón',
-      ],
-    },
-  ];
+  function handleArea(e) {
+    handleProvince(e);
+    handleChange(e);
+  }
 
-  const [province, setProvince] = useState('');
-  const [branchs, setBranchs] = useState([]);
-  const handleProvince = (e) => {
-    setProvince(e.target.value);
-  };
-  useEffect(() => {
-    function handleBranch() {
-      if (province === 'pc') {
-        setBranchs(unoExpress[0].branchs);
-      } else if (province === 'ca') {
-        setBranchs(unoExpress[2].branchs);
-      } else if (province === 'cb') {
-        setBranchs(unoExpress[1].branchs);
-      } else {
-      }
+  function handleChange(e) {
+    setDirection({ ...direction, [e.target.name]: e.target.value });
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let result = checkProperties();
+    if (result) {
+      toast('Todos los campos son obligatorios', {
+        type: 'error',
+        position: 'top-right',
+        autoClose: 3000,
+      });
+      return;
     }
-    handleBranch();
-  }, [province]);
+    const response = await addDirection(direction);
+    localStorage.setItem('etx_direction', JSON.stringify(response.data));
+    console.log(response);
 
+    toast('Dirección agregada correctamente', {
+      type: 'success',
+      position: 'top-right',
+      autoClose: 3000,
+    });
+  }
+
+  function checkProperties() {
+    const values = Object.values(direction);
+    let result = values.map((item) => {
+      if (item === '') {
+        return true;
+      }
+      return false;
+    });
+    return result.includes(true);
+  }
   return (
     <div className={styles.form_container}>
       <h2>Datos de Entrega</h2>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.form_control}>
           <label className={styles.form_title} htmlFor="province">
             Provincia
@@ -90,21 +66,27 @@ const DirectionForm = () => {
           <select
             name="province"
             id="province"
-            onChange={handleProvince}
+            onChange={handleArea}
             className={styles.select}
           >
             <option>---</option>
-            <option value="pc">Ciudad de Panamá y Colón</option>
-            <option value="ca">Azuero y Provincias Centrales</option>
-            <option value="cb">Chiriquí y Bocas del Toro</option>
+            <option value="zone_1">Ciudad de Panamá y Colón</option>
+            <option value="zone_2">Azuero y Provincias Centrales</option>
+            <option value="zone_3">Chiriquí y Bocas del Toro</option>
           </select>
         </div>
         {province && (
           <div className={styles.form_control}>
-            <label className={styles.form_title} htmlFor="branc">
+            <label className={styles.form_title} htmlFor="branch">
               Sucursal
             </label>
-            <select name="branch" id="branch" className={styles.select}>
+            <select
+              name="branch"
+              id="branch"
+              className={styles.select}
+              onChange={handleChange}
+              required
+            >
               {branchs?.map((branch, index) => (
                 <option value={branch} key={index}>
                   {branch}
@@ -113,6 +95,25 @@ const DirectionForm = () => {
             </select>
           </div>
         )}
+        <div className={styles.form_control}>
+          <label className={styles.form_title} htmlFor="phoneNumber">
+            Telefono
+          </label>
+          <input
+            type="number"
+            name="phoneNumber"
+            id="phoneNumber"
+            onChange={handleChange}
+            className={styles.form_input}
+            required
+          />
+        </div>
+        <div className={styles.form_control}>
+          <label className={styles.form_title} htmlFor="note">
+            Información adicional
+          </label>
+          <textarea name="note" id="note" rows="3" onChange={handleChange} />
+        </div>
         <WarningMessage text="Los envios son realizados por Unoexpress" />
 
         <WarningMessage>
