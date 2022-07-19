@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import styles from './Order.module.css';
 import { useParams, Link } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import OrderItem from '../../components/OrderItem/OrderItem';
 import ProfileMenu from '../../components/ProfileMenu/ProfileMenu';
-import styles from './Order.module.css';
 import { getOrder } from '../../api/orderAPI';
 const Order = () => {
   const params = useParams();
@@ -47,7 +47,19 @@ const Order = () => {
             Id de Orden:
             <span className={styles.orderNumber}> {order?._id}</span>
           </h1>
-          <div className=""></div>
+          <div className={styles.Status}>
+            <span
+              className={
+                order.orderStatus === 'pending'
+                  ? styles.pending
+                  : order.orderStatus === 'complete'
+                  ? styles.complete
+                  : styles.rejected
+              }
+            >
+              {order.orderStatus}
+            </span>
+          </div>
         </div>
         <div className={styles.orderBody}>
           <table className={styles.itemSummary}>
@@ -96,7 +108,9 @@ const Order = () => {
             </div>
             <div className={styles.customerDetail}>
               <h4 className={styles.customerDetailTitle}>Numero de Teléfono</h4>
-              <p className={styles.customerDetailContent}>6495 6520</p>
+              <p className={styles.customerDetailContent}>
+                {order.phoneNumber}
+              </p>
             </div>
             <div className={styles.customerDetail}>
               <h4 className={styles.customerDetailTitle}>tipo</h4>
@@ -104,7 +118,7 @@ const Order = () => {
             </div>
             <div className={styles.customerDetail}>
               <h4 className={styles.customerDetailTitle}>Nota</h4>
-              <p className={styles.customerDetailContent}>N/A</p>
+              <p className={styles.customerDetailContent}>{order.note}</p>
             </div>
           </div>
         </div>
@@ -132,14 +146,14 @@ const Order = () => {
             <div className={styles.orderSummaryItem}>
               <span className={styles.orderSummaryItemTitle}>Subtotal</span>
               <span className={styles.orderSummaryItemValue}>
-                $ {order?.amount - 20}
+                $ {order?.amount - 7}
               </span>
             </div>
             <div className={styles.orderSummaryItem}>
               <span className={styles.orderSummaryItemTitle}>
                 Gastos de envío
               </span>
-              <span className={styles.orderSummaryItemValue}>$20.00</span>
+              <span className={styles.orderSummaryItemValue}>$7.00</span>
             </div>
           </div>
         </div>
@@ -159,11 +173,15 @@ const Order = () => {
           </div>
           <div className={styles.DeliveryAddressItem}>
             <span className={styles.DeliveryAddressItemTitle}>Provincia: </span>
-            <span className={styles.DeliveryAddressItemValue}>Coclé</span>
+            <span className={styles.DeliveryAddressItemValue}>
+              {order.province}
+            </span>
           </div>
           <div className={styles.DeliveryAddressItem}>
             <span className={styles.DeliveryAddressItemTitle}>Sucursal: </span>
-            <span className={styles.DeliveryAddressItemValue}>Penonomé</span>
+            <span className={styles.DeliveryAddressItemValue}>
+              {order.branch}
+            </span>
           </div>
         </div>
       </section>

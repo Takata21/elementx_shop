@@ -68,6 +68,7 @@
     flex-direction: column;
     gap: 20px;
     padding: 9px;
+    min-height: 450px;
 }
 
 

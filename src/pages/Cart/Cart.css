@@ -157,9 +157,14 @@
 
     }
 
-    .cart-direction-container {
-
+    .cart-delivery-container {
         flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .cart-direction-container {
+        flex-direction: row;
+
     }
 
     .cart-items {
@@ -169,5 +174,6 @@
     .card-payment {
         width: 350px;
         max-height: 400px;
+        align-self: flex-end;
     }
 }

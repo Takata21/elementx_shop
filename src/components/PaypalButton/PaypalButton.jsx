@@ -24,6 +24,7 @@ const PaypalComponent = () => {
 
     try {
       const { id, payer, purchase_units } = action;
+      console.log(address);
       await addNewOrder({
         paymentId: id,
         email: payer.email_address,
@@ -34,6 +35,7 @@ const PaypalComponent = () => {
         cart_id: cart_id,
         products: products,
         totalItems: totalItems,
+        address: address,
       });
     } catch (error) {
       console.error(error);
@@ -67,11 +69,14 @@ const PaypalComponent = () => {
 
   const onApprove = async (data, actions) => {
     const action = await actions.order.capture();
+    console.log(action);
     if (action.status === 'COMPLETED') {
       await handleOrder(action);
       toast.success('Orden realizada con exito');
       clearCart();
       navigate('/');
+    } else {
+      toast.error('Error al realizar la orden');
     }
   };
 

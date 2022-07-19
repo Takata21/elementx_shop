@@ -55,3 +55,10 @@
 .btn:hover {
     background: #da5b16;
 }
+
+@media screen and (min-width: 720px) {
+    .form_container {
+        width: 500px;
+
+    }
+}

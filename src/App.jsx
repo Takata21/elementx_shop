@@ -21,7 +21,6 @@ import Product from './pages/Product/Product';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Profile from './pages/profile/Profile';
-import AdminPage from './pages/AdminPage/AdminPage';
 import Orders from './pages/Orders/Orders';
 import Budget from './pages/Budget/Budget';
 import Bills from './pages/Bills/Bills';
@@ -31,6 +30,7 @@ import ContactPage from './pages/ContactPage/ContactPage';
 import EmailVerificationRequired from './pages/EmailVerificationRequired/EmailVerificationRequired';
 import Order from './pages/Order/Order';
 import VerifyUser from './pages/VerifyUser/VerifyUser';
+import AdminPage from './pages/AdminPage/AdminPage';
 
 function App() {
   return (

@@ -54,7 +54,19 @@
 }
 
 .nav_cart {
+    position: relative;
     padding-right: 18px;
+
+}
+
+.nav_cart_items {
+    position: absolute;
+    top: -13px;
+    right: 20px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #FF7E38;
+
 
 }
 

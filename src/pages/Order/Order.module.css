@@ -28,6 +28,54 @@
     gap: 25px;
 }
 
+.orderHead {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.orderHead h1 {
+    margin-left: 0;
+    margin-right: 0;
+
+}
+
+.Status {
+    text-transform: capitalize;
+    font-weight: 800;
+    /* color: orange; */
+
+}
+
+.complete {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15%;
+    background-color: #e6f7e8;
+    color: #38c74a;
+    font-weight: 600;
+}
+
+.pending {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15%;
+    background-color: #fff3e8;
+    color: #ffb560;
+    font-weight: 600;
+}
+
+.rejected {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 15%;
+    background-color: #feebeb;
+    color: #fa6161;
+    font-weight: 600;
+}
+
+
 .orderNotFound {
     height: 100vh;
     display: flex;

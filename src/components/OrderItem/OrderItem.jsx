@@ -21,8 +21,8 @@ const OrderItem = ({ order }) => {
           </p>
         </div>
         <div className={styles.orderCell}>
-          <span>envie a</span>
-          <p>Cocle Penonome</p>
+          <span>enviado a</span>
+          <p>{order.branch}</p>
         </div>
       </div>
       <div className={styles.orderNumberContainer}>
@@ -34,7 +34,11 @@ const OrderItem = ({ order }) => {
           <Link to={`/profile/orders/${order._id}`}>detalles</Link>
           <p
             className={
-              order.orderStatus === 'pending' ? styles.pending : styles.complete
+              order.orderStatus === 'pending'
+                ? styles.pending
+                : order.orderStatus === 'complete'
+                ? styles.complete
+                : styles.rejected
             }
           >
             {order.orderStatus}

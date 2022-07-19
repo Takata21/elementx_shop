@@ -6,7 +6,7 @@ import Carousel from '../components/carousel/Carousel';
 import { TailSpin } from 'react-loader-spinner';
 const HomePage = () => {
   const { isLoading, products } = useProducts();
-
+  window.scrollTo(0, 0);
   if (isLoading) {
     return (
       <div className="d-flex justify-content-center align-items-center h-100 min-h">
@@ -36,9 +36,10 @@ const HomePage = () => {
       </div>
       <div className="px-2 product-container">
         <div className="products-card-container">
-          {products.map((product) => {
-            return <ProductCard product={product} key={product._id} />;
-          })}
+          {products &&
+            products?.map((product) => {
+              return <ProductCard product={product} key={product._id} />;
+            })}
         </div>
       </div>
       <SecondaryBanner />

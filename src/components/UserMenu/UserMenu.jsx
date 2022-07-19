@@ -50,11 +50,11 @@ const UserMenu = ({ show, handleShow }) => {
                 <FaChartPie />
                 <span>Mis ordenes</span>
               </Link>
-              <Link to="/profile/orders" className={styles.userMenu_option}>
+              <Link to="/profile/budget" className={styles.userMenu_option}>
                 <FaShoppingBag />
                 <span>Compras</span>
               </Link>
-              <Link to="/profile/orders" className={styles.userMenu_option}>
+              <Link to="/profile/bills" className={styles.userMenu_option}>
                 <FaWallet />
                 <span>Pagos</span>
               </Link>

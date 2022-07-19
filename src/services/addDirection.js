@@ -1,5 +1,5 @@
 import { API_URL_LOCAL, API_URL_ONLINE } from '../config';
-const ENDPOINT = `${API_URL_ONLINE}/addresses`;
+const ENDPOINT = `${API_URL_LOCAL}/addresses`;
 async function addDirection(direction) {
   console.log(direction);
   return fetch(ENDPOINT, {

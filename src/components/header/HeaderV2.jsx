@@ -7,8 +7,10 @@ import LateralMenu from '../LateralMenu/LateralMenu';
 import { useMenu } from '../../hooks/useMenu';
 import { useAuth } from '../../context/provider/AuthContext';
 import UserMenu from '../UserMenu/UserMenu';
+import { useCart } from '../../context/provider/CartContext';
 const HeaderV2 = () => {
   const { isLoggedIn, user } = useAuth();
+  const { totalItems } = useCart();
   const hamburgerMenu = useMenu();
   const userMenu = useMenu();
   return (
@@ -65,6 +67,7 @@ const HeaderV2 = () => {
             </div>
             <Link to="/cart" className={styles.nav_cart}>
               <FaShoppingCart size={'32px'} color="#fff" />
+              <span className={styles.nav_cart_items}>{totalItems}</span>
             </Link>
             <UserMenu show={userMenu.show} handleShow={userMenu.handleShow} />
           </div>

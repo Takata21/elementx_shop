@@ -34,9 +34,8 @@ const DirectionForm = () => {
       });
       return;
     }
-    const response = await addDirection(direction);
-    localStorage.setItem('etx_direction', JSON.stringify(response.data));
-    console.log(response);
+    // const response = await addDirection(direction);
+    localStorage.setItem('etx_direction', JSON.stringify(direction));
 
     toast('Dirección agregada correctamente', {
       type: 'success',

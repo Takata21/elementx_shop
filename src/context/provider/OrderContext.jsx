@@ -47,6 +47,7 @@ export const OrderProvider = ({ children }) => {
     province,
     subsidiary,
     totalItems,
+    address,
   }) => {
     dispatch({ type: ordersActions.LOAD_SAVE_ORDER });
     try {
@@ -62,6 +63,7 @@ export const OrderProvider = ({ children }) => {
         province,
         subsidiary,
         totalItems,
+        address,
       });
 
       if (res.data) {

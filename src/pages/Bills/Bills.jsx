@@ -1,7 +1,9 @@
 import React from 'react';
 import OrderItem from '../../components/OrderItem/OrderItem';
 import ProfileMenu from '../../components/ProfileMenu/ProfileMenu';
+import { useOrders } from '../../context/provider/OrderContext';
 const Bills = () => {
+  const { orders } = useOrders();
   return (
     <div className="orders-container">
       <ProfileMenu />
@@ -50,17 +52,10 @@ const Bills = () => {
           </div>
         </div>
         <div className="orders_items-container">
-          <OrderItem />
-          <OrderItem />
-          <OrderItem />
-          <OrderItem />
-          <OrderItem />
-          <OrderItem />
-          <OrderItem />
-          <OrderItem />
-          <OrderItem />
-          <OrderItem />
-          <OrderItem />
+          {orders &&
+            orders
+              .filter((order) => order.orderStatus === 'complete')
+              .map((order, index) => <OrderItem order={order} key={index} />)}
         </div>
         <div className="orders-pagination">
           <button>Anterior</button>
