@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { API_URL_LOCAL, API_URL_ONLINE } from '../config';
-const API = API_URL_LOCAL + '/order';
+const API = API_URL_ONLINE + '/order';
 
 const axios2 = axios.create({
   baseURL: `${API}`,

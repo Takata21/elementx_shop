@@ -10,6 +10,7 @@ const PaypalComponent = () => {
   const { clearCart, items, cart_id, totalItems } = useCart();
   const { addNewOrder } = useOrders();
   let navigate = useNavigate();
+  let delivery = 7.0;
   const address = localStorage.getItem('etx_direction');
   const handleOrder = async (action) => {
     let products = [];
@@ -48,7 +49,7 @@ const PaypalComponent = () => {
     const items = cart.items.map((item) => ({
       unit_amount: {
         currency_code: 'USD',
-        value: item.price * item.quantity,
+        value: item.price * item.quantity + delivery,
       },
       quantity: item.quantity,
       name: item.name,
@@ -57,7 +58,7 @@ const PaypalComponent = () => {
     return actions.order.create({
       purchase_units: [
         {
-          description: 'Some Hardware Products',
+          description: 'Compra de productos Elementx',
           amount: {
             value: cart.totalPrice,
             currency_code: 'USD',
@@ -72,7 +73,10 @@ const PaypalComponent = () => {
     console.log(action);
     if (action.status === 'COMPLETED') {
       await handleOrder(action);
-      toast.success('Orden realizada con exito');
+      toast.success('Orden realizada con exito', {
+        duration: 10000,
+        position: 'top-right',
+      });
       clearCart();
       navigate('/');
     } else {
